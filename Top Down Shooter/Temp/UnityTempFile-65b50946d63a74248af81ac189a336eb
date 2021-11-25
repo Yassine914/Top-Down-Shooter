@@ -1,0 +1,481 @@
+/target:library
+/out:Temp/Unity.2D.Animation.Editor.dll
+/nowarn:0169
+/nowarn:0649
+/refout:Temp/Unity.2D.Animation.Editor.dll.ref
+/deterministic
+/debug:portable
+/optimize+
+/nostdlib+
+/preferreduilang:en-US
+/langversion:8.0
+/reference:Library/ScriptAssemblies/Unity.2D.Animation.Runtime.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Animation.Triangle.Runtime.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Common.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Common.Runtime.dll
+/reference:Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll
+/reference:Library/ScriptAssemblies/Unity.InternalAPIEditorBridge.001.dll
+/reference:Library/ScriptAssemblies/Unity.InternalAPIEngineBridge.001.dll
+/reference:Library/ScriptAssemblies/UnityEditor.TestRunner.dll
+/reference:Library/ScriptAssemblies/UnityEditor.UI.dll
+/reference:Library/ScriptAssemblies/UnityEngine.TestRunner.dll
+/reference:Library/ScriptAssemblies/UnityEngine.UI.dll
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEditor.Graphs.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/PlaybackEngines/AndroidPlayer/UnityEditor.Android.Extensions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/PlaybackEngines/WindowsStandaloneSupport/UnityEditor.WindowsStandalone.Extensions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.CoreModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.GraphViewModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.PackageManagerUIModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.SceneTemplateModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIElementsModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIElementsSamplesModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.UIServiceModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.UnityConnectModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEditor.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ARModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AccessibilityModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AndroidJNIModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AnimationModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AssetBundleModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.AudioModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClothModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterInputModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ClusterRendererModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.CoreModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.CrashReportingModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.DSPGraphModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.DirectorModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.GIModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.GameCenterModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.GridModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.HotReloadModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.IMGUIModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ImageConversionModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputLegacyModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.InputModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.JSONSerializeModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.LocalizationModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ParticleSystemModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.PerformanceReportingModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.Physics2DModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.PhysicsModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ProfilerModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.RuntimeInitializeOnLoadManagerInitializerModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.ScreenCaptureModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SharedInternalsModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteMaskModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SpriteShapeModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.StreamingModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SubstanceModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.SubsystemsModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TLSModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TerrainPhysicsModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextCoreModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TextRenderingModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.TilemapModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIElementsNativeModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UIModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UNETModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UmbraModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityAnalyticsModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityConnectModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityCurlModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityTestProtocolModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAssetBundleModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestAudioModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestTextureModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.UnityWebRequestWWWModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VFXModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VRModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VehiclesModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VideoModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.VirtualTexturingModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.WindModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.XRModule.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/Microsoft.Win32.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.AppContext.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.Concurrent.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.NonGeneric.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.Specialized.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Collections.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.Annotations.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.EventBasedAsync.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.TypeConverter.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ComponentModel.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Console.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Data.Common.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Contracts.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Debug.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.FileVersionInfo.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Process.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.StackTrace.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.TextWriterTraceListener.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.Tools.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Diagnostics.TraceSource.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Drawing.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Dynamic.Runtime.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.Calendars.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.Extensions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Globalization.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.Compression.ZipFile.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.DriveInfo.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.Watcher.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.FileSystem.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.IsolatedStorage.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.MemoryMappedFiles.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.Pipes.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.UnmanagedMemoryStream.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.IO.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Expressions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Parallel.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.Queryable.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Linq.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Http.Rtc.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.NameResolution.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.NetworkInformation.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Ping.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Requests.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Security.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.Sockets.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebHeaderCollection.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebSockets.Client.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Net.WebSockets.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ObjectModel.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.ILGeneration.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.Lightweight.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Emit.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Extensions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Reflection.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.Reader.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.ResourceManager.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Resources.Writer.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.CompilerServices.VisualC.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Extensions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Handles.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.RuntimeInformation.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.WindowsRuntime.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.InteropServices.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Numerics.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Formatters.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Json.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.Serialization.Xml.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Runtime.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Claims.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Algorithms.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Csp.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Encoding.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Cryptography.X509Certificates.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.Principal.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Security.SecureString.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Duplex.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Http.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.NetTcp.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Primitives.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ServiceModel.Security.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.Encoding.Extensions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.Encoding.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Text.RegularExpressions.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Overlapped.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Tasks.Parallel.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Tasks.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Thread.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.ThreadPool.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.Timer.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Threading.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.ValueTuple.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.ReaderWriter.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XDocument.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.XDocument.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XPath.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XmlDocument.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/System.Xml.XmlSerializer.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Facades/netstandard.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/Microsoft.CSharp.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Core.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Data.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.IO.Compression.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Net.Http.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Numerics.Vectors.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Numerics.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Runtime.Serialization.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.Linq.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.Xml.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/System.dll"
+/reference:"A:/Programs/Unity Editor/2020.3.22f1/Editor/Data/MonoBleedingEdge/lib/mono/4.7.1-api/mscorlib.dll"
+/reference:"H:/Yassin NoName/Unity Projects/Top Down Shooter/Top Down Shooter/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Antlr3.Runtime.dll"
+/reference:"H:/Yassin NoName/Unity Projects/Top Down Shooter/Top Down Shooter/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/Unity.Plastic.Newtonsoft.Json.dll"
+/reference:"H:/Yassin NoName/Unity Projects/Top Down Shooter/Top Down Shooter/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/log4netPlastic.dll"
+/reference:"H:/Yassin NoName/Unity Projects/Top Down Shooter/Top Down Shooter/Library/PackageCache/com.unity.collab-proxy@1.13.5/Lib/Editor/PlasticSCM/unityplastic.dll"
+/reference:"H:/Yassin NoName/Unity Projects/Top Down Shooter/Top Down Shooter/Library/PackageCache/com.unity.ext.nunit@1.0.6/net35/unity-custom/nunit.framework.dll"
+/reference:"H:/Yassin NoName/Unity Projects/Top Down Shooter/Top Down Shooter/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll"
+/define:CSHARP_7_3_OR_NEWER
+/define:CSHARP_7_OR_LATER
+/define:DEBUG
+/define:ENABLE_AR
+/define:ENABLE_AUDIO
+/define:ENABLE_BURST_AOT
+/define:ENABLE_CACHING
+/define:ENABLE_CLOTH
+/define:ENABLE_CLOUD_LICENSE
+/define:ENABLE_CLOUD_SERVICES
+/define:ENABLE_CLOUD_SERVICES_ADS
+/define:ENABLE_CLOUD_SERVICES_ANALYTICS
+/define:ENABLE_CLOUD_SERVICES_BUILD
+/define:ENABLE_CLOUD_SERVICES_COLLAB
+/define:ENABLE_CLOUD_SERVICES_COLLAB_SOFTLOCKS
+/define:ENABLE_CLOUD_SERVICES_CRASH_REPORTING
+/define:ENABLE_CLOUD_SERVICES_PURCHASING
+/define:ENABLE_CLOUD_SERVICES_UNET
+/define:ENABLE_CLOUD_SERVICES_USE_WEBREQUEST
+/define:ENABLE_CLUSTERINPUT
+/define:ENABLE_CLUSTER_SYNC
+/define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
+/define:ENABLE_CUSTOM_RENDER_TEXTURE
+/define:ENABLE_DIRECTOR
+/define:ENABLE_DIRECTOR_AUDIO
+/define:ENABLE_DIRECTOR_TEXTURE
+/define:ENABLE_EDITOR_HUB_LICENSE
+/define:ENABLE_EVENT_QUEUE
+/define:ENABLE_LEGACY_INPUT_MANAGER
+/define:ENABLE_LOCALIZATION
+/define:ENABLE_LZMA
+/define:ENABLE_MANAGED_ANIMATION_JOBS
+/define:ENABLE_MANAGED_AUDIO_JOBS
+/define:ENABLE_MANAGED_JOBS
+/define:ENABLE_MANAGED_TRANSFORM_JOBS
+/define:ENABLE_MICROPHONE
+/define:ENABLE_MONO
+/define:ENABLE_MONO_BDWGC
+/define:ENABLE_MOVIES
+/define:ENABLE_MULTIPLE_DISPLAYS
+/define:ENABLE_NETWORK
+/define:ENABLE_OUT_OF_PROCESS_CRASH_HANDLER
+/define:ENABLE_PHYSICS
+/define:ENABLE_PROFILER
+/define:ENABLE_RUNTIME_GI
+/define:ENABLE_SCRIPTING_GC_WBARRIERS
+/define:ENABLE_SPRITES
+/define:ENABLE_TERRAIN
+/define:ENABLE_TEXTURE_STREAMING
+/define:ENABLE_TILEMAP
+/define:ENABLE_TIMELINE
+/define:ENABLE_UNET
+/define:ENABLE_UNITYEVENTS
+/define:ENABLE_UNITYWEBREQUEST
+/define:ENABLE_UNITY_COLLECTIONS_CHECKS
+/define:ENABLE_VIDEO
+/define:ENABLE_VIRTUALTEXTURING
+/define:ENABLE_VR
+/define:ENABLE_WEBCAM
+/define:ENABLE_WEBSOCKET_CLIENT
+/define:ENABLE_WEBSOCKET_HOST
+/define:ENABLE_WWW
+/define:GFXDEVICE_WAITFOREVENT_MESSAGEPUMP
+/define:INCLUDE_DYNAMIC_GI
+/define:NET_4_6
+/define:PLATFORM_ARCH_64
+/define:PLATFORM_STANDALONE
+/define:PLATFORM_STANDALONE_WIN
+/define:PLATFORM_SUPPORTS_MONO
+/define:PLATFORM_UPDATES_TIME_OUTSIDE_OF_PLAYER_LOOP
+/define:RENDER_SOFTWARE_CURSOR
+/define:SCENE_TEMPLATE_MODULE
+/define:TRACE
+/define:UNITY_2017_1_OR_NEWER
+/define:UNITY_2017_2_OR_NEWER
+/define:UNITY_2017_3_OR_NEWER
+/define:UNITY_2017_4_OR_NEWER
+/define:UNITY_2018_1_OR_NEWER
+/define:UNITY_2018_2_OR_NEWER
+/define:UNITY_2018_3_OR_NEWER
+/define:UNITY_2018_4_OR_NEWER
+/define:UNITY_2019_1_OR_NEWER
+/define:UNITY_2019_2_OR_NEWER
+/define:UNITY_2019_3_OR_NEWER
+/define:UNITY_2019_4_OR_NEWER
+/define:UNITY_2020
+/define:UNITY_2020_1_OR_NEWER
+/define:UNITY_2020_2_OR_NEWER
+/define:UNITY_2020_3
+/define:UNITY_2020_3_22
+/define:UNITY_2020_3_OR_NEWER
+/define:UNITY_5_3_OR_NEWER
+/define:UNITY_5_4_OR_NEWER
+/define:UNITY_5_5_OR_NEWER
+/define:UNITY_5_6_OR_NEWER
+/define:UNITY_64
+/define:UNITY_ASSERTIONS
+/define:UNITY_EDITOR
+/define:UNITY_EDITOR_64
+/define:UNITY_EDITOR_WIN
+/define:UNITY_INCLUDE_TESTS
+/define:UNITY_STANDALONE
+/define:UNITY_STANDALONE_WIN
+/define:UNITY_TEAM_LICENSE
+/define:USE_SEARCH_ENGINE_API
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\Analytics.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\AssemblyInfo.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\ClipperLib\clipper.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\ICharacterDataProvider.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\LayoutOverlay\DropdownMenu.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\LayoutOverlay\LayoutOverlay.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\LayoutOverlay\LayoutOverlayUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\LayoutOverlay\Manipulators\Draggable.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\LayoutOverlay\ScrollableToolbar.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\ResourceLoader.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\AssociateBonesScope.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\BaseTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\BoneDrawingUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Cache\BaseObject.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Cache\Cache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Cache\CacheObject.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\CharacterModeTool\SwitchModeTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\ColorExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\CopyTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\DefaultPoseScope.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\DrawingUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\GenerateGeometryTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\GenerateWeightsTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\HorizontalToggleTools.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\Brush.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\GUIWrapper.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\ISkeletonView.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\ISpriteMeshView.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\RectSelectionTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\RectSlider.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\SkeletonController.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\SkeletonView.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\Slider2D.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\SpriteMeshController.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\SpriteMeshView.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\UnselectTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IMGUI\WeightInspector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\IconUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\MathUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\MeshPreviewTool\IMeshPreviewBehaviour.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\MeshPreviewTool\MeshPreviewBehaviour.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\MeshPreviewTool\MeshPreviewTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\MeshTool\MeshTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\MeshTool\MeshToolWrapper.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\ModuleToolGroup.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\ModuleUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\OutlineGenerator\IOutlineGenerator.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\OutlineGenerator\OutlineGenerator.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selection\BoneSelection.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selection\IBoneSelection.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selection\ISelection.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selection\ITransformSelection.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selection\IndexedSelection.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selection\SerializableSelection.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selection\SkeletonSelection.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SelectionTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\CircleVertexSelector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\GenericVertexSelector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\ICircleSelector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\IRectSelector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\ISelector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\RectBoneSelector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\RectVertexSelector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Selectors\Unselector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SerializableDictionary.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkeletonTool\SkeletonStyles.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkeletonTool\SkeletonTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkeletonTool\SkeletonToolView.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkeletonTool\SkeletonToolWrapper.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\BoneCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\BoneCacheExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\CharacterCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\CharacterPartCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\CharacterPartCacheExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\MeshCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\MeshPreviewCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SkeletonCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SkeletonCacheExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SkinningCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SkinningCachePersistentState.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SkinningEnums.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SkinningEvents.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SpriteCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\SpriteCacheExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\TransformCache.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCache\TransformCacheExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningCopyUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningModule.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningModuleView.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningSerializer\ISkinningSerializer.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningSerializer\SkinningSerializerJSON.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SkinningSerializer\SkinningSerializerXML.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteBoneInfluence\SpriteBoneInfluenceListWidget.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteBoneInfluence\SpriteBoneInfluenceTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteBoneInfluence\SpriteBoneInfluenceWindow.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\BoneWeightExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\Edge.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\EditableBoneWeight.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\EditableBoneWeightUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\SmoothingUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\SpriteMeshData.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\SpriteMeshDataController.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\Vertex2D.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\SpriteMeshData\WeightEditor.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\TextContent.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Triangulation\ITriangulator.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Triangulation\TriangulationUtility.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Triangulation\Triangulator.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\BoneInspectorPanel.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\BoneToolbar.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\CopyToolbar.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\GenerateGeometryPanel.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\GenerateWeightsPanel.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\MeshToolbar.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\PastePanel.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\Toolbar.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\VisualElementExtensions.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\WeightInspectorIMGUIPanel.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\WeightPainterPanel.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UI\WeightToolbar.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Undo\DisableUndoScope.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Undo\DisabledUndo.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Undo\ICacheUndo.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Undo\IUndo.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Undo\UndoScope.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\Undo\UnityEngineUndo.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\UserSettings.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\BoneReparentTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\BoneTreeViewController.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\BoneTreeViewModel.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\BoneVisibilityTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\BoneVisibilityToolInterface.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\MeshVisibilityTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\SpriteVisibilityTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\VisibilityTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\VisibilityToolBase.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\VisibilityToolColumnHeader.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\VisibilityTool\VisibilityToolResizer.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\WeightPainterTool.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\WeightPainterToolWrapper.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\WeightsGenerator\BoundedBiharmonicWeightsGenerator.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SkinningModule\WeightsGenerator\IWeightsGenerator.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteLib\SpriteLibraryAssetInspector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteLib\SpriteLibraryDataProvider.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteLib\SpriteLibraryInspector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteLib\SpriteResolverInspector.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteLib\SpriteSelectionWidget.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteOutlineRenderer\SpriteOutlineRenderer.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpritePostProcess.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteSkin\BoneGizmo.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteSkin\BoneGizmoToggle.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteSkin\SpriteSkinCompositeDebugWindow.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteSkin\SpriteSkinEditor.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteSkin\SpriteSkinEntityEditor.cs"
+"H:\Yassin NoName\Unity Projects\Top Down Shooter\Top Down Shooter\Library\PackageCache\com.unity.2d.animation@5.0.9\Editor\SpriteSkin\TransformExtensions.cs"
