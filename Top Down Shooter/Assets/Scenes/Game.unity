@@ -699,6 +699,36 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &902437297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 902437298}
+  m_Layer: 0
+  m_Name: Shooting Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &902437298
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 902437297}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.71, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1882664987}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1163465148
 GameObject:
   m_ObjectHideFlags: 0
@@ -724,8 +754,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1163465148}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.323, y: 0, z: 0}
-  m_LocalScale: {x: 0.54536885, y: 0.3677424, z: 1}
+  m_LocalPosition: {x: 0, y: 0.43, z: 0}
+  m_LocalScale: {x: 0.3284146, y: 0.45872188, z: 1}
   m_Children: []
   m_Father: {fileID: 1882664987}
   m_RootOrder: 0
@@ -1071,6 +1101,7 @@ GameObject:
   - component: {fileID: 1882664985}
   - component: {fileID: 1882664984}
   - component: {fileID: 1882664983}
+  - component: {fileID: 1882664988}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -1090,8 +1121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53a2fb545e66044ca2f5f6a88d80db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityText: {fileID: 1196585667}
-  movementSpeed: 8
+  moveSpeed: 5
+  rb: {fileID: 1882664984}
 --- !u!50 &1882664984
 Rigidbody2D:
   serializedVersion: 4
@@ -1104,7 +1135,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -1112,7 +1143,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!58 &1882664985
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1192,6 +1223,22 @@ Transform:
   m_LocalScale: {x: 0.8917, y: 0.8917, z: 0.8917}
   m_Children:
   - {fileID: 1163465149}
+  - {fileID: 902437298}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1882664988
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1882664982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d66e11a7278ad64ca7e24120e0d46ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShootPoint: {fileID: 902437298}
+  bulletPrefab: {fileID: 7051363015727532173, guid: d9a74e5f393bcbb47ad8436cde86dfe0, type: 3}
+  bulletForce: 2.5
