@@ -7,7 +7,8 @@ TagManager:
   - Asteroid
   - Planets
   - Enemies
-  - Bullets
+  - PlayerBullets
+  - EnemyBullets
   layers:
   - Default
   - TransparentFX
@@ -19,8 +20,8 @@ TagManager:
   - Player
   - Enemies
   - GameBorders
-  - Bullets
-  - 
+  - PlayerBullets
+  - EnemyBullets
   - 
   - 
   - 
@@ -50,4 +51,7 @@ TagManager:
     locked: 0
   - name: Game
     uniqueID: 1459043595
+    locked: 0
+  - name: UI
+    uniqueID: 3558892527
     locked: 0
