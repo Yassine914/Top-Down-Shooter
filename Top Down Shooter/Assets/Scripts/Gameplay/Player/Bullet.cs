@@ -1,9 +1,10 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [HideInInspector] public int bulletDmg;
+    
     private Collider2D _collider2D;
     private void Awake()
     {
@@ -21,5 +22,11 @@ public class Bullet : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D other)
     {
         Destroy(gameObject);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.CompareTag("Shield"))
+            Destroy(gameObject);
     }
 }

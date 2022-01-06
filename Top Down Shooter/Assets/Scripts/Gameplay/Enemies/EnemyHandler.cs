@@ -22,9 +22,9 @@ public class EnemyHandler : MonoBehaviour
     private string _enemyName;
     private int _enemyHealth;
     [HideInInspector] public int enemyDamage;
-    private float _enemySpeed;
-    private float _enemyShootSpeed;
-    private float _enemyShootDelay;
+    [HideInInspector] public float enemySpeed;
+    [HideInInspector] public float enemyShootSpeed;
+    [HideInInspector] public float enemyShootDelay;
     
     private Transform _player;
     private Vector3 _playerPos;
@@ -35,9 +35,9 @@ public class EnemyHandler : MonoBehaviour
         _enemyName = enemyInfo.enemyName;
         _enemyHealth = enemyInfo.enemyHealth;
         enemyDamage = enemyInfo.enemyDamage;
-        _enemySpeed = enemyInfo.enemySpeed;
-        _enemyShootSpeed = enemyInfo.enemyShootSpeed;
-        _enemyShootDelay = enemyInfo.enemyShootDelay;
+        enemySpeed = enemyInfo.enemySpeed;
+        enemyShootSpeed = enemyInfo.enemyShootSpeed;
+        enemyShootDelay = enemyInfo.enemyShootDelay;
         
         healthRenderer.sprite = healthSprites.Last();
     }
@@ -52,20 +52,28 @@ public class EnemyHandler : MonoBehaviour
         _playerPos = _player.transform.position;
         FollowPlayer(_playerPos);
         
-        
         if(_enemyHealth <= 0)
             Destroy(gameObject);
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.collider.CompareTag("PlayerBullets"))
+        if (other.collider.CompareTag("PlayerBullets") && _enemyName != "Penta")
         {
             _enemyHealth--;
 
             if (_enemyHealth > 0 && _enemyHealth != 1)
-            {
                 healthRenderer.sprite = healthSprites[(_enemyHealth / 2) - 1];
+        }
+
+        if (other.collider.CompareTag("PlayerBullets") && _enemyName == "Penta")
+        {
+            if (GetComponent<PentaEnemyAbility>().shieldIsActive == false)
+            {
+                _enemyHealth--;
+
+                if (_enemyHealth > 0 && _enemyHealth != 1)
+                    healthRenderer.sprite = healthSprites[(_enemyHealth / 2) - 1];
             }
         }
     }
@@ -73,8 +81,11 @@ public class EnemyHandler : MonoBehaviour
     private void FollowPlayer(Vector3 playerPos)
     {
         var enemyPos = transform.position;
-        transform.position = Vector3.MoveTowards(enemyPos, playerPos , _enemySpeed * Time.deltaTime);
-        
+        if (Vector2.Distance(playerPos, enemyPos) > 3)
+        {
+            transform.position = Vector2.MoveTowards(enemyPos, playerPos , enemySpeed * Time.deltaTime);
+        }
+
         Vector3 dir = (playerPos - enemyPos);
         Quaternion rot = Quaternion.LookRotation(Vector3.forward, dir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * enemyLookSpd);
@@ -83,7 +94,7 @@ public class EnemyHandler : MonoBehaviour
     // ReSharper disable Unity.PerformanceAnalysis
     private IEnumerator ShootDelay()
     {
-        yield return new WaitForSeconds(_enemyShootDelay);
+        yield return new WaitForSeconds(enemyShootDelay);
         Shoot();
         StartCoroutine(ShootDelay());
     }
@@ -92,10 +103,12 @@ public class EnemyHandler : MonoBehaviour
     {
         GameObject bullet1 = Instantiate(bulletPrefab, shootPoint1.position, shootPoint1.rotation);
         Rigidbody2D bulletRb1 = bullet1.GetComponent<Rigidbody2D>();
-        bulletRb1.AddForce(shootPoint1.up * _enemyShootSpeed, ForceMode2D.Impulse);
+        bulletRb1.AddForce(shootPoint1.up * enemyShootSpeed, ForceMode2D.Impulse);
+        bullet1.GetComponent<Bullet>().bulletDmg = enemyDamage;
         
         GameObject bullet2 = Instantiate(bulletPrefab, shootPoint2.position, shootPoint2.rotation);
         Rigidbody2D bulletRb2 = bullet2.GetComponent<Rigidbody2D>();
-        bulletRb2.AddForce(shootPoint2.up * _enemyShootSpeed, ForceMode2D.Impulse);
+        bulletRb2.AddForce(shootPoint2.up * enemyShootSpeed, ForceMode2D.Impulse);
+        bullet2.GetComponent<Bullet>().bulletDmg = enemyDamage;
     }
 }

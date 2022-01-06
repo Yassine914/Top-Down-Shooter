@@ -1,0 +1,48 @@
+using System.Collections;
+using UnityEngine;
+
+public class HexEnemyAbility : MonoBehaviour
+{
+    [SerializeField] private float enemyShootDelay;
+    [SerializeField] private float enemyShootSpeed;
+    [SerializeField] private float enemySpeed;
+
+    [SerializeField] private float spreeTime;
+    [SerializeField] private float spreeDelay;
+
+    private EnemyHandler _enemyHandler;
+
+    private float _oldSpeed;
+    private float _oldShootSpd;
+    private float _oldShootDelay;
+    private void Start()
+    {
+        _enemyHandler = GetComponent<EnemyHandler>();
+        
+        _oldShootSpd = _enemyHandler.enemyShootSpeed;
+        _oldSpeed = _enemyHandler.enemySpeed;
+        _oldShootDelay = _enemyHandler.enemyShootDelay;
+        
+        StartCoroutine(ShootingSpree());
+    }
+
+    private IEnumerator ShootingSpree()
+    {
+        yield return new WaitForSeconds(spreeDelay);
+        LeanTween.color(gameObject, Color.red, 0.5f).setLoopPingPong();
+
+        _enemyHandler.enemySpeed = enemySpeed;
+        _enemyHandler.enemyShootSpeed = enemyShootSpeed;
+        _enemyHandler.enemyShootDelay = enemyShootDelay;
+        
+        yield return new WaitForSeconds(spreeTime);
+        LeanTween.pause(gameObject);
+        LeanTween.color(gameObject, Color.white, 0.5f);
+
+        _enemyHandler.enemySpeed = _oldSpeed;
+        _enemyHandler.enemyShootSpeed = _oldShootSpd;
+        _enemyHandler.enemyShootDelay = _oldShootDelay;
+        
+        StartCoroutine(ShootingSpree());
+    }
+}
