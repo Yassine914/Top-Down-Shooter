@@ -53,6 +53,9 @@ TagManager:
   - name: Game
     uniqueID: 1459043595
     locked: 0
+  - name: Enemies
+    uniqueID: 3046484897
+    locked: 0
   - name: UI
     uniqueID: 3558892527
     locked: 0

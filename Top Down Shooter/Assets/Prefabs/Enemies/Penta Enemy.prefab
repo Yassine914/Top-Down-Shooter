@@ -72,9 +72,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1459043595
-  m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingLayerID: -1248482399
+  m_SortingLayer: 3
+  m_SortingOrder: 5
   m_Sprite: {fileID: 21300000, guid: 68fccb4f8f7eda447bbba83183a4c6ed, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -154,9 +154,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1459043595
-  m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingLayerID: -1248482399
+  m_SortingLayer: 3
+  m_SortingOrder: 6
   m_Sprite: {fileID: 21300000, guid: dd982b2d1ff04dc46aafd5ec1aeac2ff, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -261,9 +261,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_Mass: 100
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -289,6 +289,8 @@ MonoBehaviour:
     enemySpeed: 0.6
     enemyShootSpeed: 0.5
     enemyShootDelay: 2
+    minDistFromPlayer: 3
+    enemyLookSpeed: 2
   healthSprites:
   - {fileID: 21300000, guid: 0baf1ed4c91fa674e9494a59019d1519, type: 3}
   - {fileID: 21300000, guid: dcd3f15ade738db4f820ee49602b9078, type: 3}
@@ -296,14 +298,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: b252ba62990e9d541aae8af16232b4b4, type: 3}
   - {fileID: 21300000, guid: dd982b2d1ff04dc46aafd5ec1aeac2ff, type: 3}
   healthRenderer: {fileID: 8724415436495134165}
-  enemyLookSpd: 2
   shootPoint1: {fileID: 8724415437656699439}
   shootPoint2: {fileID: 8724415437968029133}
   bulletPrefab: {fileID: 6871203398914315833, guid: 33cb802402639af40876e505a2c9ffe1, type: 3}
+  enemyName: 
   enemyDamage: 0
   enemySpeed: 0
   enemyShootSpeed: 0
   enemyShootDelay: 0
+  minDistFromPlayer: 0
+  enemyLookSpeed: 0
 --- !u!114 &8724415437879680596
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shieldObj: {fileID: 8724415437950551345}
-  minWaitTime: 3
+  minWaitTime: 3.5
   maxWaitTime: 6
   minShieldTime: 2
   maxShieldTime: 4
@@ -339,7 +343,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &8724415437950551344
 Transform:
   m_ObjectHideFlags: 0
@@ -391,9 +395,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1459043595
-  m_SortingLayer: 2
-  m_SortingOrder: 4
+  m_SortingLayerID: -1248482399
+  m_SortingLayer: 3
+  m_SortingOrder: 7
   m_Sprite: {fileID: 21300000, guid: 581cc69754d5e1548a8cc15c3d1f8f90, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

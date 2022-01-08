@@ -7,4 +7,6 @@ public class Enemy
     public float enemySpeed;
     public float enemyShootSpeed;
     public float enemyShootDelay;
+    public float minDistFromPlayer;
+    public float enemyLookSpeed;
 }

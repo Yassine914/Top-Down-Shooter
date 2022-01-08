@@ -10,21 +10,19 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField] private Sprite[] healthSprites;
     [SerializeField] private SpriteRenderer healthRenderer;
 
-    [Header("Follow Player")] 
-    [Tooltip("This Defines The Shooting Accuracy")] 
-    [SerializeField] private float enemyLookSpd;
-
     [Header("Shooting")] 
     [SerializeField] private Transform shootPoint1;
     [SerializeField] private Transform shootPoint2;
     [SerializeField] private GameObject bulletPrefab;
     
-    private string _enemyName;
+    [HideInInspector] public string enemyName;
     private int _enemyHealth;
     [HideInInspector] public int enemyDamage;
     [HideInInspector] public float enemySpeed;
     [HideInInspector] public float enemyShootSpeed;
     [HideInInspector] public float enemyShootDelay;
+    [HideInInspector] public float minDistFromPlayer;
+    [HideInInspector] public float enemyLookSpeed;
     
     private Transform _player;
     private Vector3 _playerPos;
@@ -32,12 +30,14 @@ public class EnemyHandler : MonoBehaviour
     private void Awake()
     {
         _player = GameObject.Find("Player").transform;
-        _enemyName = enemyInfo.enemyName;
+        enemyName = enemyInfo.enemyName;
         _enemyHealth = enemyInfo.enemyHealth;
         enemyDamage = enemyInfo.enemyDamage;
         enemySpeed = enemyInfo.enemySpeed;
         enemyShootSpeed = enemyInfo.enemyShootSpeed;
         enemyShootDelay = enemyInfo.enemyShootDelay;
+        minDistFromPlayer = enemyInfo.minDistFromPlayer;
+        enemyLookSpeed = enemyInfo.enemyLookSpeed;
         
         healthRenderer.sprite = healthSprites.Last();
     }
@@ -56,9 +56,9 @@ public class EnemyHandler : MonoBehaviour
             Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D other)
+    private void OnCollisionEnter2D(Collision2D other) //Damage Calculation
     {
-        if (other.collider.CompareTag("PlayerBullets") && _enemyName != "Penta")
+        if (other.collider.CompareTag("PlayerBullets") && enemyName != "Penta")
         {
             _enemyHealth--;
 
@@ -66,7 +66,7 @@ public class EnemyHandler : MonoBehaviour
                 healthRenderer.sprite = healthSprites[(_enemyHealth / 2) - 1];
         }
 
-        if (other.collider.CompareTag("PlayerBullets") && _enemyName == "Penta")
+        if (other.collider.CompareTag("PlayerBullets") && enemyName == "Penta")
         {
             if (GetComponent<PentaEnemyAbility>().shieldIsActive == false)
             {
@@ -78,28 +78,27 @@ public class EnemyHandler : MonoBehaviour
         }
     }
 
-    private void FollowPlayer(Vector3 playerPos)
+    private void FollowPlayer(Vector3 playerPos) //Follow Player & Look At Him
     {
         var enemyPos = transform.position;
-        if (Vector2.Distance(playerPos, enemyPos) > 3)
+        if (Vector2.Distance(playerPos, enemyPos) > minDistFromPlayer)
         {
             transform.position = Vector2.MoveTowards(enemyPos, playerPos , enemySpeed * Time.deltaTime);
         }
 
         Vector3 dir = (playerPos - enemyPos);
         Quaternion rot = Quaternion.LookRotation(Vector3.forward, dir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * enemyLookSpd);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * enemyLookSpeed);
     }
 
-    // ReSharper disable Unity.PerformanceAnalysis
-    private IEnumerator ShootDelay()
+    private IEnumerator ShootDelay() //Time Between Bullets
     {
         yield return new WaitForSeconds(enemyShootDelay);
         Shoot();
         StartCoroutine(ShootDelay());
     }
     
-    private void Shoot()
+    private void Shoot() //Shoot
     {
         GameObject bullet1 = Instantiate(bulletPrefab, shootPoint1.position, shootPoint1.rotation);
         Rigidbody2D bulletRb1 = bullet1.GetComponent<Rigidbody2D>();

@@ -98,9 +98,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1459043595
-  m_SortingLayer: 2
-  m_SortingOrder: 2
+  m_SortingLayerID: -1248482399
+  m_SortingLayer: 3
+  m_SortingOrder: 4
   m_Sprite: {fileID: 21300000, guid: 569a3211248dcd54e880e807da19265c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -185,7 +185,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1459043595
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 3
   m_Sprite: {fileID: 21300000, guid: 73decf90bc38e6d4dbdcb469d834e67c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -261,8 +261,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 50
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -288,6 +288,8 @@ MonoBehaviour:
     enemySpeed: 0.7
     enemyShootSpeed: 0.3
     enemyShootDelay: 2
+    minDistFromPlayer: 3.3
+    enemyLookSpeed: 2
   healthSprites:
   - {fileID: 21300000, guid: 9c3f4f49db639134cacd0489b8c5d8ae, type: 3}
   - {fileID: 21300000, guid: 91c0cb0201df41f42aff22054208d391, type: 3}
@@ -296,14 +298,16 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 71a9cc4fc120e3d4c9848c9919f60798, type: 3}
   - {fileID: 21300000, guid: 569a3211248dcd54e880e807da19265c, type: 3}
   healthRenderer: {fileID: 5311450212598789573}
-  enemyLookSpd: 2
   shootPoint1: {fileID: 5311450212424100886}
   shootPoint2: {fileID: 5311450213156591972}
   bulletPrefab: {fileID: 6871203398914315833, guid: 33cb802402639af40876e505a2c9ffe1, type: 3}
+  enemyName: 
   enemyDamage: 0
   enemySpeed: 0
   enemyShootSpeed: 0
   enemyShootDelay: 0
+  minDistFromPlayer: 0
+  enemyLookSpeed: 0
 --- !u!114 &5311450212772348408
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -319,8 +323,11 @@ MonoBehaviour:
   enemyShootDelay: 0.1
   enemyShootSpeed: 0.6
   enemySpeed: 0
-  spreeTime: 4
-  spreeDelay: 5
+  enemyLookSpd: 0.6
+  minSpreeTime: 2.5
+  maxSpreeTime: 4
+  minSpreeDelay: 4
+  maxSpreeDelay: 6
 --- !u!1 &5311450213156591973
 GameObject:
   m_ObjectHideFlags: 0

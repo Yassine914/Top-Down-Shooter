@@ -68,8 +68,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1459043595
-  m_SortingLayer: 2
+  m_SortingLayerID: -1248482399
+  m_SortingLayer: 3
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 3cfba7b90eb358d4b885e87bd693e90c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -175,8 +175,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 50
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDrag: 1
+  m_AngularDrag: 1
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
@@ -199,23 +199,27 @@ MonoBehaviour:
     enemyName: Circle
     enemyHealth: 8
     enemyDamage: 1
-    enemySpeed: 1
+    enemySpeed: 1.4
     enemyShootSpeed: 0.5
     enemyShootDelay: 1.5
+    minDistFromPlayer: 2.6
+    enemyLookSpeed: 2.5
   healthSprites:
   - {fileID: 21300000, guid: d86ec830657e79145a6294c80e2fd48b, type: 3}
   - {fileID: 21300000, guid: 16f72bfaa912a59479159b8d633f6772, type: 3}
   - {fileID: 21300000, guid: 61a13c77af5eb8d44944cf3e3ca66b79, type: 3}
   - {fileID: 21300000, guid: 3cfba7b90eb358d4b885e87bd693e90c, type: 3}
   healthRenderer: {fileID: 7074329823213275730}
-  enemyLookSpd: 2.6
   shootPoint1: {fileID: 7074329823715571003}
   shootPoint2: {fileID: 7074329824668847421}
   bulletPrefab: {fileID: 6871203398914315833, guid: 33cb802402639af40876e505a2c9ffe1, type: 3}
+  enemyName: 
   enemyDamage: 0
   enemySpeed: 0
   enemyShootSpeed: 0
   enemyShootDelay: 0
+  minDistFromPlayer: 0
+  enemyLookSpeed: 0
 --- !u!1 &7074329824498828238
 GameObject:
   m_ObjectHideFlags: 0
@@ -287,8 +291,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1459043595
-  m_SortingLayer: 2
+  m_SortingLayerID: -1248482399
+  m_SortingLayer: 3
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: b4220201ae510744d8baa581c85e6c52, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

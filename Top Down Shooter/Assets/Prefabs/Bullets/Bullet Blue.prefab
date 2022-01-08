@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4781103800649298738}
   - component: {fileID: 4899743774408653336}
   - component: {fileID: 6422838702093074733}
-  - component: {fileID: 223694052701600098}
   - component: {fileID: 6178457178169606265}
+  - component: {fileID: 223694052701600098}
   m_Layer: 10
   m_Name: Bullet Blue
   m_TagString: PlayerBullets
@@ -99,25 +99,13 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 0
---- !u!114 &223694052701600098
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6871203398914315833}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2e6173f6a5ebea54790da34161e5347b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &6178457178169606265
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -144,3 +132,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.15125528, y: 0.45199388}
   m_EdgeRadius: 0
+--- !u!114 &223694052701600098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6871203398914315833}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6173f6a5ebea54790da34161e5347b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bulletDmg: 0

@@ -3,11 +3,7 @@ using UnityEngine;
 public class BombEnemy : MonoBehaviour
 {
     [SerializeField] private Enemy enemyInfo;
-    
-    [Header("Follow Player")] 
-    [Tooltip("This Defines The Shooting Accuracy")] 
-    [SerializeField] private float enemyLookSpd;
-    
+
     [HideInInspector] public int enemyDamage;
     private Transform _player;
 
@@ -34,7 +30,7 @@ public class BombEnemy : MonoBehaviour
 
             Vector3 dir = (playerPos - enemyPos);
         Quaternion rot = Quaternion.LookRotation(Vector3.forward, dir);
-        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * enemyLookSpd);
+        transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * enemyInfo.enemyLookSpeed);
     }
     
     private void OnCollisionEnter2D(Collision2D other)
@@ -46,7 +42,7 @@ public class BombEnemy : MonoBehaviour
 
         if (other.collider.CompareTag("Player"))
         {
-            enemyInfo.enemyHealth--;
+            enemyInfo.enemyHealth -= enemyInfo.enemyHealth;
             other.gameObject.GetComponent<PlayerHealth>().health -= enemyDamage;
         }
     }

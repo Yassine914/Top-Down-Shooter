@@ -13,13 +13,13 @@ MonoBehaviour:
   m_Name: Wave #1
   m_EditorClassIdentifier: 
   waveNumber: 1
-  rounds: 2
-  minRoundTime: 6
-  maxRoundTime: 8
-  minRoundEnemies: 2
-  maxRoundEnemies: 4
-  circleEnemyPercent: 50
-  hexEnemyPercent: 20
-  pentaEnemyPercent: 20
-  bombEnemyPercent: 10
+  minWaveEnemies: 8
+  maxWaveEnemies: 14
+  minTimeBetweenSpawns: 2
+  maxTimeBetweenSpawns: 5
+  circleEnemyPercent: 80
+  hexEnemyPercent: 10
+  pentaEnemyPercent: 10
+  bombEnemyPercent: 0
+  speedEnemyPercent: 0
   bossLevel: 0
