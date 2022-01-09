@@ -146,7 +146,6 @@ public class EnemyWaveHandler : MonoBehaviour
     {
         var waveEnemies = Random.Range(waves[wave].minWaveEnemies, waves[wave].maxWaveEnemies);
         var enemiesSpawned = 0;
-        Debug.Log( "Wave #" + (wave + 1) + ", Wave Enemies: " + waveEnemies);
 
         yield return new WaitForSeconds(1f);
         
@@ -156,7 +155,6 @@ public class EnemyWaveHandler : MonoBehaviour
             
             Instantiate(enemies[RandomEnemy(wave)], SpawnLocation(), Quaternion.identity);
             enemiesSpawned += 1;
-            Debug.Log("Enemies Spawned: " + enemiesSpawned);
             yield return new WaitForSeconds(Random.Range(waves[wave].minTimeBetweenSpawns, waves[wave].maxTimeBetweenSpawns));
         }
 
@@ -169,11 +167,25 @@ public class EnemyWaveHandler : MonoBehaviour
                 yield return new WaitForSeconds(5f);
                 if (GameObject.FindGameObjectsWithTag("Enemies").Length == 0)
                 {
+                    StartCoroutine(WaveComplete());
                     yield return new WaitForSeconds(4f);
                     StartCoroutine(WaveCountdown(wave + 1));
                     break;
                 }
             }
         }
+    }
+
+    private IEnumerator WaveComplete()
+    {
+        wavesText.text = "Wave Completed";
+        wavesTextObj.SetActive(true);
+        LeanTween.scale(wavesTextObj, new Vector3(1, 1, 1), 0.5f);
+        
+        yield return new WaitForSeconds(1.6f);
+        LeanTween.scale(wavesTextObj, new Vector3(0, 0, 0), 0.5f);
+        
+        yield return new WaitForSeconds(0.5f);
+        wavesText.gameObject.SetActive(false);
     }
 }

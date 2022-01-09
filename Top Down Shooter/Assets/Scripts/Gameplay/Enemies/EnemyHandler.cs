@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Linq;
+using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyHandler : MonoBehaviour
 {
@@ -14,7 +16,12 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField] private Transform shootPoint1;
     [SerializeField] private Transform shootPoint2;
     [SerializeField] private GameObject bulletPrefab;
-    
+
+    [Header("Coins")] 
+    [SerializeField] private GameObject coin;
+    [SerializeField] private int minCoins;
+    [SerializeField] private int maxCoins;
+
     [HideInInspector] public string enemyName;
     private int _enemyHealth;
     [HideInInspector] public int enemyDamage;
@@ -55,9 +62,13 @@ public class EnemyHandler : MonoBehaviour
 
         _playerPos = _player.transform.position;
         FollowPlayer(_playerPos);
-        
-        if(_enemyHealth <= 0)
-            Destroy(gameObject);
+
+        if (_enemyHealth <= 0)
+        {
+            SpawnCoins();
+            gameObject.SetActive(false);
+            Destroy(gameObject, 1f);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other) //Damage Calculation
@@ -115,5 +126,17 @@ public class EnemyHandler : MonoBehaviour
         Rigidbody2D bulletRb2 = bullet2.GetComponent<Rigidbody2D>();
         bulletRb2.AddForce(shootPoint2.up * enemyShootSpeed, ForceMode2D.Impulse);
         bullet2.GetComponent<Bullet>().bulletDmg = enemyDamage;
+    }
+
+    private void SpawnCoins()
+    {
+        var coinSpawn = Random.Range(minCoins, maxCoins);
+
+        var pos = transform.position;
+        for (int i = 0; i < coinSpawn; i++)
+        {
+           Instantiate(coin, pos, quaternion.identity);
+           pos += new Vector3(Random.Range(-0.4f, 0.5f), Random.Range(-0.4f, 0.4f), 0);
+        }
     }
 }

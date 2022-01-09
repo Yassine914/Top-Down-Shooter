@@ -44,4 +44,15 @@ public class SceneHandler : MonoBehaviour
     {
         Application.Quit();
     }
+
+    public void BackToMenu()
+    {
+        StartCoroutine(BackToMenuDelay());
+    }
+    
+    private IEnumerator BackToMenuDelay()
+    {
+        yield return new WaitForSeconds(sceneDelay);
+        SceneManager.LoadScene("Main Menu");
+    }
 }

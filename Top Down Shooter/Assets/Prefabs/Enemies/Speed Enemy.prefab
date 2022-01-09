@@ -139,6 +139,9 @@ MonoBehaviour:
   shootPoint1: {fileID: 3952193146733536772}
   shootPoint2: {fileID: 3952193145977676262}
   bulletPrefab: {fileID: 6871203398914315833, guid: 33cb802402639af40876e505a2c9ffe1, type: 3}
+  coin: {fileID: 7597260015965022774, guid: 7c8bd6fd6358e5a4e81e804acc27c3e7, type: 3}
+  minCoins: 1
+  maxCoins: 4
   enemyName: 
   enemyDamage: 0
   enemySpeed: 0

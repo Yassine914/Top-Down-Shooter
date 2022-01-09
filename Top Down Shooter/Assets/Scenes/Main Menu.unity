@@ -135,7 +135,7 @@ GameObject:
   - component: {fileID: 23533568}
   m_Layer: 0
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: Background
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1451,6 +1451,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPosition: -25
   timeDelay: 0.7
+  tweenTime: 0.8
 --- !u!1 &859324323
 GameObject:
   m_ObjectHideFlags: 0

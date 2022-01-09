@@ -180,8 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
-  healthSlider: {fileID: 0}
-  healthText: {fileID: 0}
+  coinsObjectDelay: 1.5
 --- !u!1 &5870930876587498115
 GameObject:
   m_ObjectHideFlags: 0

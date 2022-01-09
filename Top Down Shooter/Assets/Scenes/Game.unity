@@ -152,8 +152,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 856720745}
-  m_RootOrder: 0
+  m_Father: {fileID: 1524185710}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -700,9 +700,10 @@ GameObject:
   - component: {fileID: 461058762}
   - component: {fileID: 461058764}
   - component: {fileID: 461058763}
+  - component: {fileID: 461058765}
   m_Layer: 5
   m_Name: Coin Icon
-  m_TagString: Untagged
+  m_TagString: CoinCounter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -724,8 +725,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -95, y: -105.8}
-  m_SizeDelta: {x: 113.3413, y: 113.3422}
+  m_AnchoredPosition: {x: -95.7, y: -105.79999}
+  m_SizeDelta: {x: 98.4891, y: 98.4899}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &461058763
 MonoBehaviour:
@@ -762,6 +763,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461058761}
   m_CullTransparentMesh: 1
+--- !u!114 &461058765
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 461058761}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38ba87f9f6bb9c243b7462307046e683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinsText: {fileID: 700024585}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,10 +891,10 @@ RectTransform:
   m_Father: {fileID: 461058762}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -272.4017, y: -0.0012207}
-  m_SizeDelta: {x: 390.3297, y: 148.5332}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: -155.6, y: 0.0000000031432}
+  m_SizeDelta: {x: 285.6888, y: 108.7139}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &700024585
 MonoBehaviour:
@@ -929,12 +943,12 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 121.25
-  m_fontSizeBase: 116.14
+  m_fontSize: 100
+  m_fontSizeBase: 100
   m_fontWeight: 400
-  m_enableAutoSizing: 1
+  m_enableAutoSizing: 0
   m_fontSizeMin: 18
-  m_fontSizeMax: 123
+  m_fontSizeMax: 123.82
   m_fontStyle: 0
   m_HorizontalAlignment: 4
   m_VerticalAlignment: 512
@@ -1177,8 +1191,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 485974}
+  m_Children: []
   m_Father: {fileID: 1524185710}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1648,7 +1661,7 @@ GameObject:
   - component: {fileID: 1524185711}
   m_Layer: 5
   m_Name: Health Bar
-  m_TagString: Untagged
+  m_TagString: HealthBarSlider
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1667,6 +1680,7 @@ RectTransform:
   - {fileID: 149946544}
   - {fileID: 1999475739}
   - {fileID: 856720745}
+  - {fileID: 485974}
   m_Father: {fileID: 801364235}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1929,7 +1943,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
   m_AnchoredPosition: {x: 0, y: -97}
-  m_SizeDelta: {x: 446.7984, y: 101.3017}
+  m_SizeDelta: {x: 765.5234, y: 116.09}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1844137856
 MonoBehaviour:
@@ -1978,7 +1992,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 83.75
+  m_fontSize: 96
   m_fontSizeBase: 81.88
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2159,12 +2173,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5870930875417621295, guid: 6d4dd33f252ad9d49a5c0e3b02131a1f, type: 3}
-      propertyPath: healthText
-      value: 
-      objectReference: {fileID: 485975}
+      propertyPath: coinsObjectDelay
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 5870930875417621295, guid: 6d4dd33f252ad9d49a5c0e3b02131a1f, type: 3}
-      propertyPath: healthSlider
-      value: 
-      objectReference: {fileID: 1524185711}
+      propertyPath: coinsObjTweenTime
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d4dd33f252ad9d49a5c0e3b02131a1f, type: 3}

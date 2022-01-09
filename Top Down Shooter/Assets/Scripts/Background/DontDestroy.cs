@@ -1,10 +1,12 @@
-using System;
 using UnityEngine;
 
 public class DontDestroy : MonoBehaviour
 {
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
+        if (GameObject.FindGameObjectsWithTag("Background").Length == 2)
+            Destroy(gameObject);
+        else
+            DontDestroyOnLoad(gameObject);
     }
 }
