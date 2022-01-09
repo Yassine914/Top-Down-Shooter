@@ -14,12 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waveNumber: 1
   minWaveEnemies: 8
-  maxWaveEnemies: 14
+  maxWaveEnemies: 12
   minTimeBetweenSpawns: 2
   maxTimeBetweenSpawns: 5
   circleEnemyPercent: 80
-  hexEnemyPercent: 10
-  pentaEnemyPercent: 10
+  hexEnemyPercent: 0
+  pentaEnemyPercent: 20
   bombEnemyPercent: 0
   speedEnemyPercent: 0
   bossLevel: 0

@@ -29,6 +29,8 @@ public class EnemyHandler : MonoBehaviour
     
     private void Awake()
     {
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        
         _player = GameObject.Find("Player").transform;
         enemyName = enemyInfo.enemyName;
         _enemyHealth = enemyInfo.enemyHealth;
@@ -49,6 +51,8 @@ public class EnemyHandler : MonoBehaviour
 
     private void Update()
     {
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+
         _playerPos = _player.transform.position;
         FollowPlayer(_playerPos);
         
@@ -94,6 +98,8 @@ public class EnemyHandler : MonoBehaviour
     private IEnumerator ShootDelay() //Time Between Bullets
     {
         yield return new WaitForSeconds(enemyShootDelay);
+
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) yield break;
         Shoot();
         StartCoroutine(ShootDelay());
     }

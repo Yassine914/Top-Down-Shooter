@@ -5,6 +5,7 @@ using Random = UnityEngine.Random;
 
 public class EnemyWaveHandler : MonoBehaviour
 {
+    
     [Header("Waves")] 
     [SerializeField] private Wave[] waves;
     [SerializeField] private GameObject[] enemies;
@@ -111,7 +112,7 @@ public class EnemyWaveHandler : MonoBehaviour
         return 0;
     }
     
-    private IEnumerator WaveCountdown(int wave) //Wave Countdown Starts and then Wave
+    private IEnumerator WaveCountdown(int wave) //Wave Countdown Starts and then the Wave Starts
     {
         wavesText.text = "Wave #" + (wave + 1);
         wavesTextObj.SetActive(true);
@@ -151,6 +152,8 @@ public class EnemyWaveHandler : MonoBehaviour
         
         for (int i = 0; i < waveEnemies; i++)
         {
+            if(GameObject.FindGameObjectsWithTag("Player").Length == 0) yield break;
+            
             Instantiate(enemies[RandomEnemy(wave)], SpawnLocation(), Quaternion.identity);
             enemiesSpawned += 1;
             Debug.Log("Enemies Spawned: " + enemiesSpawned);
@@ -166,7 +169,6 @@ public class EnemyWaveHandler : MonoBehaviour
                 yield return new WaitForSeconds(5f);
                 if (GameObject.FindGameObjectsWithTag("Enemies").Length == 0)
                 {
-                    Debug.Log("Enemies = 0");
                     yield return new WaitForSeconds(4f);
                     StartCoroutine(WaveCountdown(wave + 1));
                     break;

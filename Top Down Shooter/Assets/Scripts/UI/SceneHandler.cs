@@ -18,6 +18,17 @@ public class SceneHandler : MonoBehaviour
         SceneManager.LoadScene(currentScene + 1);
     }
 
+    public void ShopButton()
+    {
+        StartCoroutine(ShopButtonDelay());
+    }
+
+    private IEnumerator ShopButtonDelay()
+    {
+        yield return new WaitForSeconds(sceneDelay);
+        SceneManager.LoadScene("Shop");
+    }
+    
     public void SettingsButton()
     {
         StartCoroutine(SettingsButtonDelay());
