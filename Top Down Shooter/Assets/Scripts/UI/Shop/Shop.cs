@@ -15,6 +15,7 @@ public class Colors
     public int index;
     public int price;
     public bool isUnlocked;
+    public bool isEquipped;
 }
 
 [System.Serializable]

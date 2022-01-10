@@ -36,9 +36,6 @@ public class EnemyHandler : MonoBehaviour
     
     private void Awake()
     {
-        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
-        
-        _player = GameObject.Find("Player").transform;
         enemyName = enemyInfo.enemyName;
         _enemyHealth = enemyInfo.enemyHealth;
         enemyDamage = enemyInfo.enemyDamage;
@@ -53,6 +50,9 @@ public class EnemyHandler : MonoBehaviour
 
     private void Start()
     {
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
+        
         StartCoroutine(ShootDelay());
     }
 

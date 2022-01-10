@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +6,6 @@ public class PlayerHealthAndCoins : MonoBehaviour
 {
     [Header("Health")] 
     [SerializeField] public int health;
-
-    [Header("Coins")] 
-    [SerializeField] private float coinsObjectDelay;
-    [SerializeField] private float coinsObjTweenTime;
     
     private Slider healthSlider;
     private TextMeshProUGUI healthText;
@@ -34,9 +28,13 @@ public class PlayerHealthAndCoins : MonoBehaviour
     {
         healthSlider.value = health;
         healthText.text = health.ToString();
-        
+
         if (health <= 0)
+        {
+            health = 0;
+            healthText.text = health.ToString();
             Destroy(gameObject);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

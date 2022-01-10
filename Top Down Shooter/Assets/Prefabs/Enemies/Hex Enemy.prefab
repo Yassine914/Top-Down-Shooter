@@ -300,7 +300,7 @@ MonoBehaviour:
   healthRenderer: {fileID: 5311450212598789573}
   shootPoint1: {fileID: 5311450212424100886}
   shootPoint2: {fileID: 5311450213156591972}
-  bulletPrefab: {fileID: 6871203398914315833, guid: 33cb802402639af40876e505a2c9ffe1, type: 3}
+  bulletPrefab: {fileID: 6871203398914315833, guid: 421c54116edebc345b7dc1d05dec827d, type: 3}
   coin: {fileID: 7597260015965022774, guid: 7c8bd6fd6358e5a4e81e804acc27c3e7, type: 3}
   minCoins: 1
   maxCoins: 4

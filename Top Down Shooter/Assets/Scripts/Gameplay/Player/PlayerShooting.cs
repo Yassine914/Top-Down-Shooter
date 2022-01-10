@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -6,11 +7,17 @@ public class PlayerShooting : MonoBehaviour
     [Header("Shooting")]
     [SerializeField] private Transform ShootPoint1;
     [SerializeField] private Transform ShootPoint2;
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject[] bullets;
     [SerializeField] private float bulletForce = 20f;
     [SerializeField] private float bulletDelay;
     private bool isShooting = false;
-        
+    private GameObject selectedBullet;
+
+
+    private void Awake()
+    {
+        selectedBullet = bullets[PlayerPrefs.GetInt("EquippedBullet", 0)];
+    }
 
     private void Update()
     {
@@ -30,11 +37,11 @@ public class PlayerShooting : MonoBehaviour
 
     private void Shoot()
     {
-        GameObject bullet1 = Instantiate(bulletPrefab, ShootPoint1.position, ShootPoint1.rotation);
+        GameObject bullet1 = Instantiate(selectedBullet, ShootPoint1.position, ShootPoint1.rotation);
         Rigidbody2D bulletRb1 = bullet1.GetComponent<Rigidbody2D>();
         bulletRb1.AddForce(ShootPoint1.up * bulletForce, ForceMode2D.Impulse);
         
-        GameObject bullet2 = Instantiate(bulletPrefab, ShootPoint2.position, ShootPoint2.rotation);
+        GameObject bullet2 = Instantiate(selectedBullet, ShootPoint2.position, ShootPoint2.rotation);
         Rigidbody2D bulletRb2 = bullet2.GetComponent<Rigidbody2D>();
         bulletRb2.AddForce(ShootPoint2.up * bulletForce, ForceMode2D.Impulse);
     }
