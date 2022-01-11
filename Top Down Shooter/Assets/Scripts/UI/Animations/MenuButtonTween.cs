@@ -13,21 +13,23 @@ public class MenuButtonTween : MonoBehaviour
 
     private void Start()
     {
-        var screen = Camera.main.WorldToScreenPoint(new Vector3(positionStart, positionStart, 0));
-
+        var screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        var screenPos = Camera.main.WorldToScreenPoint(new Vector3(-screen.x + positionStart, -screen.y + positionStart, 0));
+        
         if (moveAxis == MoveAxis.XAxis)
-            LeanTween.moveX(gameObject, screen.x, .7f).setDelay(timeDelay).setEase(LeanTweenType.easeOutBack);
+            LeanTween.moveX(gameObject, screenPos.x, .7f).setDelay(timeDelay).setEase(LeanTweenType.easeOutBack);
         else if (moveAxis == MoveAxis.YAxis)
-            LeanTween.moveY(gameObject, screen.y, .7f).setDelay(timeDelay).setEase(LeanTweenType.easeOutBack);
+            LeanTween.moveY(gameObject, screenPos.y, .7f).setDelay(timeDelay).setEase(LeanTweenType.easeOutBack);
     }
 
     public void OnButtonClick()
     {
-        var screen = Camera.main.WorldToScreenPoint(new Vector3(positionEnd, positionEnd, 0));
+        var screen = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height, 0));
+        var screenPos = Camera.main.WorldToScreenPoint(new Vector3(-screen.x + positionEnd, -screen.y + positionEnd, 0));
 
         if (moveAxis == MoveAxis.XAxis)
-            LeanTween.moveX(gameObject, screen.x, .7f).setDelay(timeDelayOut).setEase(LeanTweenType.easeInBack);
+            LeanTween.moveX(gameObject, screenPos.x, .7f).setDelay(timeDelayOut).setEase(LeanTweenType.easeInBack);
         else if(moveAxis == MoveAxis.YAxis)
-            LeanTween.moveY(gameObject, screen.y, .7f).setDelay(timeDelayOut).setEase(LeanTweenType.easeInBack);
+            LeanTween.moveY(gameObject, screenPos.y, .7f).setDelay(timeDelayOut).setEase(LeanTweenType.easeInBack);
     }
 }

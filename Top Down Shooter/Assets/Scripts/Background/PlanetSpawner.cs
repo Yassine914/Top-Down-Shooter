@@ -1,4 +1,3 @@
-using System;
 using Unity.Mathematics;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -6,6 +5,7 @@ using Random = UnityEngine.Random;
 public class PlanetSpawner : MonoBehaviour
 {
     [SerializeField] private GameObject[] planets;
+    [SerializeField] private GameObject[] borders;
     private GameObject planetRing;
     private bool planetRingBool;
     private int planetSpawnRate;
@@ -27,7 +27,9 @@ public class PlanetSpawner : MonoBehaviour
 
     private void SpawnPlanets()
     {
-        Vector3 spawnPoint = new Vector3(Random.Range(-9f, 9.1f),Random.Range(-5f, 5.1f), 0f);
+        Vector3 spawnPoint = new Vector3(Random.Range(borders[3].transform.position.x, borders[2].transform.position.x ),
+            Random.Range(borders[1].transform.position.x, borders[0].transform.position.x), 0f);
+        
         var randomPlanet = Random.Range(0, planets.Length);
         var planetRing = Random.Range(0, 2);
         var planetSize = Random.Range(0.5f, 1.2f);

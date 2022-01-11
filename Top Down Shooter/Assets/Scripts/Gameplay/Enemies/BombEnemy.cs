@@ -17,12 +17,15 @@ public class BombEnemy : MonoBehaviour
 
     private void Start()
     {
-        _player = GameObject.Find("Player").transform;
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        _player = GameObject.FindGameObjectWithTag("Player").transform;
         enemyDamage = enemyInfo.enemyDamage;
     }
     
     private void Update()
     {
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        
         FollowPlayer(_player.position);
             
         if(enemyInfo.enemyHealth <= 0)

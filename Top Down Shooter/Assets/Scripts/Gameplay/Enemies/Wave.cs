@@ -7,8 +7,8 @@ public class Wave : ScriptableObject
     public int waveNumber;
     public int minWaveEnemies;
     public int maxWaveEnemies;
-    public int minTimeBetweenSpawns;
-    public int maxTimeBetweenSpawns;
+    public float minTimeBetweenSpawns;
+    public float maxTimeBetweenSpawns;
     
     [Header("Enemies")]
     public int circleEnemyPercent;

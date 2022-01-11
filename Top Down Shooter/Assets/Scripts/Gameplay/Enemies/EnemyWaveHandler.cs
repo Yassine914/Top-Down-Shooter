@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -24,6 +25,18 @@ public class EnemyWaveHandler : MonoBehaviour
     private GameObject wavesTextObj;
     [SerializeField] private TextMeshProUGUI countdownText;
     private GameObject countdownTextObj;
+
+    private void Awake()
+    {
+        if (Camera.main is null) return;
+        var screenPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,
+                Screen.height, 0));
+
+        minXValue = - screenPos.x + 1;
+        maxXValue = screenPos.x - 1;
+        minYValue = -screenPos.y + 1;
+        maxYValue = screenPos.y - 1;
+    }
 
     private void Start() //Start With First Wave
     {
@@ -128,18 +141,18 @@ public class EnemyWaveHandler : MonoBehaviour
         countdownText.text = "3";
         LeanTween.scale(countdownTextObj, new Vector3(1, 1, 1), 0.4f);
         
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         countdownText.text = "2";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         countdownText.text = "1";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.8f);
         countdownText.text = "GO!";
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(0.6f);
         LeanTween.scale(countdownTextObj, new Vector3(0, 0, 0), 0.4f);
+        StartCoroutine(Wave(wave));
+        
         yield return new WaitForSeconds(0.4f);
         countdownTextObj.SetActive(false);
-
-        StartCoroutine(Wave(wave));
     }
 
     private IEnumerator Wave(int wave) //Wave
@@ -160,7 +173,7 @@ public class EnemyWaveHandler : MonoBehaviour
 
         if (enemiesSpawned >= waveEnemies)
         {
-            var noOfTries = 50;
+            var noOfTries = 48;
             
             for (int i = 0; i < noOfTries; i++)
             {
@@ -168,7 +181,7 @@ public class EnemyWaveHandler : MonoBehaviour
                 if (GameObject.FindGameObjectsWithTag("Enemies").Length == 0)
                 {
                     StartCoroutine(WaveComplete());
-                    yield return new WaitForSeconds(4f);
+                    yield return new WaitForSeconds(2f);
                     StartCoroutine(WaveCountdown(wave + 1));
                     break;
                 }
@@ -182,7 +195,7 @@ public class EnemyWaveHandler : MonoBehaviour
         wavesTextObj.SetActive(true);
         LeanTween.scale(wavesTextObj, new Vector3(1, 1, 1), 0.5f);
         
-        yield return new WaitForSeconds(1.6f);
+        yield return new WaitForSeconds(1f);
         LeanTween.scale(wavesTextObj, new Vector3(0, 0, 0), 0.5f);
         
         yield return new WaitForSeconds(0.5f);
