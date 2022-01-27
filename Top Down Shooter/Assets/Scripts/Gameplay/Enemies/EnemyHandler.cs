@@ -22,6 +22,10 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField] private int minCoins;
     [SerializeField] private int maxCoins;
 
+    [Header("Death")]
+    [SerializeField] private GameObject explosion1;
+    [SerializeField] private Transform[] explosionLocations;
+
     [HideInInspector] public string enemyName;
     private int _enemyHealth;
     [HideInInspector] public int enemyDamage;
@@ -60,12 +64,13 @@ public class EnemyHandler : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
 
-        _playerPos = _player.transform.position;
+        _playerPos = _player.position;
         FollowPlayer(_playerPos);
 
         if (_enemyHealth <= 0)
         {
             SpawnCoins();
+            DeathExplosion();
             gameObject.SetActive(false);
             Destroy(gameObject, 1f);
         }
@@ -137,6 +142,14 @@ public class EnemyHandler : MonoBehaviour
         {
            Instantiate(coin, pos, quaternion.identity);
            pos += new Vector3(Random.Range(-0.4f, 0.5f), Random.Range(-0.4f, 0.4f), 0);
+        }
+    }
+
+    private void DeathExplosion()
+    {
+        foreach (var t in explosionLocations)
+        {
+            Instantiate(explosion1, t.position, quaternion.identity);
         }
     }
 }

@@ -10,6 +10,10 @@ public class BombEnemy : MonoBehaviour
     [SerializeField] private GameObject coin;
     [SerializeField] private int minCoins;
     [SerializeField] private int maxCoins;
+    
+    [Header("Death")]
+    [SerializeField] private GameObject explosion1;
+    [SerializeField] private Transform[] explosionLocations;
 
     [HideInInspector] public int enemyDamage;
     private Transform _player;
@@ -29,10 +33,10 @@ public class BombEnemy : MonoBehaviour
         FollowPlayer(_player.position);
             
         if(enemyInfo.enemyHealth <= 0)
-            Destroy(gameObject);
+            Destroy(gameObject); DeathExplosion();
         
         if(enemyInfo.enemyHealth <= 0 && diedFromBullet)
-            SpawnCoins();
+            SpawnCoins(); DeathExplosion();
     }
     
     private void FollowPlayer(Vector3 playerPos)
@@ -72,6 +76,14 @@ public class BombEnemy : MonoBehaviour
         {
             Instantiate(coin, pos, quaternion.identity);
             pos += new Vector3(Random.Range(-0.4f, 0.5f), Random.Range(-0.4f, 0.4f), 0);
+        }
+    }
+    
+    private void DeathExplosion()
+    {
+        foreach (var t in explosionLocations)
+        {
+            Instantiate(explosion1, t.position, quaternion.identity);
         }
     }
 }

@@ -1,8 +1,11 @@
 using System.Collections;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
+    [SerializeField] private GameObject explosion;
+    [SerializeField] private Transform explosionLoc;
     [HideInInspector] public int bulletDmg;
     
     private Collider2D _collider2D;
@@ -21,12 +24,18 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D other)
     {
-        Destroy(gameObject);
+        BulletDestroy();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Shield"))
-            Destroy(gameObject);
+            BulletDestroy();
+    }
+
+    private void BulletDestroy()
+    {
+        Instantiate(explosion, explosionLoc.position, quaternion.identity);
+        Destroy(gameObject);
     }
 }

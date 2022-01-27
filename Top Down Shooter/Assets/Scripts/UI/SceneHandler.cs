@@ -55,4 +55,29 @@ public class SceneHandler : MonoBehaviour
         yield return new WaitForSeconds(sceneDelay);
         SceneManager.LoadScene("Main Menu");
     }
+    
+    public void EasyMode()
+    {
+        SceneManager.LoadScene("Wave Mode Easy");
+    }
+
+    public void HardMode()
+    {
+        SceneManager.LoadScene("Wave Mode Hard");
+    }
+
+    public void Tutorial()
+    {
+        SceneManager.LoadScene("Tutorial Mode");
+    }
+
+    public void BossesMode()
+    {
+        SceneManager.LoadScene("Bosses Mode");
+    }
+
+    public void AbilitySelect()
+    {
+        SceneManager.LoadScene("Abilities Select");
+    }
 }
