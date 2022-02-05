@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,11 +9,15 @@ public class ShipsHandler : MonoBehaviour
     [SerializeField] private GameObject[] shipsUi;
     [SerializeField] private GameObject[] selectedUi;
     [SerializeField] private GameObject[] state;
+    [SerializeField] private GameObject acceptObj;
     private int selectedShip;
     private TextMeshProUGUI buyText;
     
     private void Start()
     {
+        acceptObj.SetActive(false);
+        acceptObj.transform.GetChild(0).transform.localScale = new Vector3(0, 0, 0);
+        
         buyText = state[0].GetComponentInChildren<TextMeshProUGUI>();
 
         foreach (var shipUi in shipsUi)
@@ -130,6 +135,21 @@ public class ShipsHandler : MonoBehaviour
         ChangeButton(selectedShip);
     }
 
+    public void OpenAcceptBox()
+    {
+        acceptObj.SetActive(true);
+        
+        LeanTween.value(acceptObj, 0f, 0.4f, 0.3f).setOnUpdate((float val) =>
+        {
+            RawImage r = acceptObj.GetComponent<RawImage>();
+            Color c = r.color;
+            c.a = val;
+            r.color = c;
+        });
+        
+        LeanTween.scale(acceptObj.transform.GetChild(0).gameObject, new Vector3(1, 1, 1), 0.3f);
+    }
+    
     public void Buy()
     {
         ships[selectedShip].isUnlocked = true;
@@ -137,5 +157,28 @@ public class ShipsHandler : MonoBehaviour
         ChangeButton(selectedShip);
         
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins", 0) - ships[selectedShip].price);
+        
+        CloseAcceptBox();
+    }
+    
+    public void CloseAcceptBox()
+    {
+        LeanTween.value(acceptObj, 0.4f, 0f, 0.3f).setOnUpdate((float val) =>
+        {
+            RawImage r = acceptObj.GetComponent<RawImage>();
+            Color c = r.color;
+            c.a = val;
+            r.color = c;
+        });
+        
+        LeanTween.scale(acceptObj.transform.GetChild(0).gameObject, new Vector3(0, 0, 0), 0.3f);
+
+        StartCoroutine(CancelDelay());
+    }
+    
+    private IEnumerator CancelDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        acceptObj.SetActive(false);
     }
 }

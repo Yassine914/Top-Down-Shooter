@@ -378,7 +378,8 @@ namespace Shapes {
 
 		protected void ApplyProperties() {
 			VerifyComponents(); // make sure components exists. rnd can be uninitialized if you modify an object that has never had awake called
-			rnd.SetPropertyBlock( Mpb );
+			if (rnd != null)
+				rnd.SetPropertyBlock( Mpb );
 			if( MeshUpdateMode == MeshUpdateMode.UseAssetCopy )
 				UpdateMeshBounds();
 		}

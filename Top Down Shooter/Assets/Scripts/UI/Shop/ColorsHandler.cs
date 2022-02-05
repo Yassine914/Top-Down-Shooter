@@ -1,3 +1,4 @@
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,11 +9,15 @@ public class ColorsHandler : MonoBehaviour
     [SerializeField] private GameObject[] colorsUi;
     [SerializeField] private GameObject[] selectedUi;
     [SerializeField] private GameObject[] state;
+    [SerializeField] private GameObject acceptObj;
     private int selectedColor;
     private TextMeshProUGUI buyText;
     
     private void Start()
     {
+        acceptObj.SetActive(false);
+        acceptObj.transform.GetChild(0).transform.localScale = new Vector3(0, 0, 0);
+        
         buyText = state[0].GetComponentInChildren<TextMeshProUGUI>();
         
         foreach (var colorUi in colorsUi)
@@ -21,6 +26,8 @@ public class ColorsHandler : MonoBehaviour
         foreach (var selected in selectedUi)
             selected.SetActive(false);
 
+        selectedColor = PlayerPrefs.GetInt("EquippedColor", 0);
+        
         foreach (Colors color in colors)
         {
             if (color.price == 0)
@@ -128,6 +135,21 @@ public class ColorsHandler : MonoBehaviour
         ChangeButton(selectedColor);
     }
 
+    public void OpenAcceptBox()
+    {
+        acceptObj.SetActive(true);
+        
+        LeanTween.value(acceptObj, 0f, 0.4f, 0.3f).setOnUpdate((float val) =>
+        {
+            RawImage r = acceptObj.GetComponent<RawImage>();
+            Color c = r.color;
+            c.a = val;
+            r.color = c;
+        });
+        
+        LeanTween.scale(acceptObj.transform.GetChild(0).gameObject, new Vector3(1, 1, 1), 0.3f);
+    }
+    
     public void Buy()
     {
         colors[selectedColor].isUnlocked = true;
@@ -135,5 +157,28 @@ public class ColorsHandler : MonoBehaviour
         ChangeButton(selectedColor);
         
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins", 0) - colors[selectedColor].price);
+        
+        CloseAcceptBox();
+    }
+     
+    public void CloseAcceptBox()
+    {
+        LeanTween.value(acceptObj, 0.4f, 0f, 0.3f).setOnUpdate((float val) =>
+        {
+            RawImage r = acceptObj.GetComponent<RawImage>();
+            Color c = r.color;
+            c.a = val;
+            r.color = c;
+        });
+        
+        LeanTween.scale(acceptObj.transform.GetChild(0).gameObject, new Vector3(0, 0, 0), 0.3f);
+
+        StartCoroutine(CancelDelay());
+    }
+    
+    private IEnumerator CancelDelay()
+    {
+        yield return new WaitForSeconds(0.3f);
+        acceptObj.SetActive(false);
     }
 }

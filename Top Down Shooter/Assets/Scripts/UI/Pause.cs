@@ -5,6 +5,7 @@ public class Pause : MonoBehaviour
 {
     [SerializeField] private GameObject[] pauseColors;
     [SerializeField] private GameObject pauseScreen;
+    [SerializeField] private float delay;
     private bool isPaused;
 
     private void Start()
@@ -40,7 +41,7 @@ public class Pause : MonoBehaviour
     {
         pauseScreen.SetActive(true);
         
-        LeanTween.value(gameObject, 0f, 0.6f, 0.3f).setOnUpdate((float val) =>
+        LeanTween.value(gameObject, 0f, 0.6f, delay).setOnUpdate((float val) =>
         {
             UnityEngine.UI.RawImage r = pauseScreen.GetComponent<UnityEngine.UI.RawImage>();
             Color c = r.color;
@@ -48,21 +49,21 @@ public class Pause : MonoBehaviour
             r.color = c;
         });
 
-        LeanTween.scale((RectTransform)pauseScreen.transform.GetChild(0).transform, new Vector2(1, 1), 0.3f);
+        LeanTween.scale((RectTransform)pauseScreen.transform.GetChild(0).transform, new Vector2(1, 1), delay);
         isPaused = true;
         StartCoroutine(PauseStartDelay());
     }
 
     private IEnumerator PauseStartDelay()
     {
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(delay);
         Time.timeScale = 0f;
     }
     
     private void PauseEnd()
     {
-        Time.timeScale = 1f;
-        LeanTween.value(gameObject, 0.6f, 0f, 0.3f).setOnUpdate((float val) =>
+        ResetTime();
+        LeanTween.value(gameObject, 0.6f, 0f, delay).setOnUpdate((float val) =>
         {
             UnityEngine.UI.RawImage r = pauseScreen.GetComponent<UnityEngine.UI.RawImage>();
             Color c = r.color;
@@ -70,14 +71,14 @@ public class Pause : MonoBehaviour
             r.color = c;
         });
         
-        LeanTween.scale((RectTransform)pauseScreen.transform.GetChild(0).transform, new Vector2(0, 0), 0.3f);
+        LeanTween.scale((RectTransform)pauseScreen.transform.GetChild(0).transform, new Vector2(0, 0), delay);
         isPaused = false;
         StartCoroutine(PauseEndDelay());
     }
     
     private IEnumerator PauseEndDelay()
     {
-        yield return new WaitForSecondsRealtime(0.3f);
+        yield return new WaitForSecondsRealtime(0.001f);
         pauseScreen.SetActive(false);
     }
 

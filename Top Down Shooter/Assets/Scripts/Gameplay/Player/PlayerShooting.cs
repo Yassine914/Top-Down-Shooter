@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,8 +7,8 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] private Transform ShootPoint1;
     [SerializeField] private Transform ShootPoint2;
     [SerializeField] private GameObject[] bullets;
-    [SerializeField] private float bulletForce = 20f;
-    [SerializeField] private float bulletDelay;
+    [SerializeField] public float bulletForce;
+    [SerializeField] public float bulletDelay;
     private bool isShooting = false;
     private GameObject selectedBullet;
 
