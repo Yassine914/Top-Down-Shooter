@@ -59,6 +59,11 @@ public class PlayerHealthAndCoins : MonoBehaviour
             PlayerPrefs.SetInt("Coins", coins);
             Destroy(other.gameObject);
         }
+
+        if (other.CompareTag("Earthquake"))
+        {
+            health -= other.GetComponentInParent<BossHandler>().earthquakeDmg;
+        }
     }
     
 }

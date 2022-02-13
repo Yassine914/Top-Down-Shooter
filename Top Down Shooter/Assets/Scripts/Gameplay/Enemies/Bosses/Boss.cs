@@ -8,7 +8,6 @@ public class Boss
     [Header("Boss Info")]
     public BossType bossType;
     public int bossNumber;
-    public int numOfPhases;
     
     public Sprite[] bodySprites;
     public Sprite[] gunSprites;

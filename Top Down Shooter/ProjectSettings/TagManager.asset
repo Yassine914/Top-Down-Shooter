@@ -15,6 +15,7 @@ TagManager:
   - HealthBarSlider
   - CoinCounter
   - BossHpBar
+  - Earthquake
   layers:
   - Default
   - TransparentFX

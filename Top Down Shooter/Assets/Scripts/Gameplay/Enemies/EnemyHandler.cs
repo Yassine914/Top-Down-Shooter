@@ -6,6 +6,8 @@ using Random = UnityEngine.Random;
 
 public class EnemyHandler : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private Enemy enemyInfo;
     
     [Header("Health")]
@@ -37,6 +39,8 @@ public class EnemyHandler : MonoBehaviour
     
     private Transform _player;
     private Vector3 _playerPos;
+
+    #endregion
     
     private void Awake()
     {

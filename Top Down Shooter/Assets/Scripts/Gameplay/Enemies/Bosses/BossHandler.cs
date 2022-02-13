@@ -7,24 +7,55 @@ using Random = UnityEngine.Random;
 
 public class BossHandler : MonoBehaviour
 {
-    private enum PhaseType
-    {
-        ShootOnly, RunOnly, EarthquakeOnly, SpawnOnly,
-        ShootAndRun, ShootAndShield, RunAndSpawn, ShootAndSpawn, ShootAndEarthquake
-    }
-    
+    #region Variables
+
+    [Header("Basic Info")]
     [SerializeField] private Boss boss;
     [SerializeField] private SpriteRenderer bodySprite, gunSprite;
-    [SerializeField] private PhaseType[] phases;
+    
+    [Header("Enemies Spawn")]
+    [SerializeField] private GameObject enemyObj;
+    [SerializeField] private float spawnInterval;
+    
+    [Header("Shooting")]
+    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private Transform shootPoint1, shootPoint2;
+    [SerializeField] private GameObject gun;
+    [SerializeField] private float gunScale;
+
+    [Header("Earthquake")] 
+    [SerializeField] private GameObject earthquakeObj;
+    [SerializeField] private float earthquakeRadius;
+    [SerializeField] private float earthquakeInterval;
+    [SerializeField] private GameObject earthquakeIndicator;
+
+    [Header("Shield")] 
+    [SerializeField] private GameObject shieldObj;
+    [SerializeField] private float shieldTime;
+    [SerializeField] private float shieldScale;
+
+    [Header("Coins")] 
+    [SerializeField] private GameObject coinObj;
+    [SerializeField] private int coins;
+
+    [HideInInspector] public float moveSpeed;
+    [HideInInspector] public int earthquakeDmg;
+    
     private GameObject player;
     private Slider hpBarSlider;
     private TextMeshProUGUI healthText;
     private int health;
-    [SerializeField] private GameObject enemyObj;
-    [SerializeField] private GameObject bulletPrefab;
-    [SerializeField] private Transform shootPoint1, shootPoint2;
+    private Vector3 screenPos;
+    private Animator anim;
+    private Vector2 randomLocation;
+
+    #endregion
+
     private void Awake()
     {
+        gun.transform.localScale = new Vector3(0, 0, 0);
+        gun.transform.position = new Vector3(0, 0, 0);
+        
         player = GameObject.FindGameObjectWithTag("Player");
         
         hpBarSlider = GameObject.FindGameObjectWithTag("BossHpBar").GetComponent<Slider>();
@@ -32,6 +63,9 @@ public class BossHandler : MonoBehaviour
         
         health = boss.health;
         hpBarSlider.maxValue = health;
+
+        moveSpeed = boss.moveSpeed;
+        earthquakeDmg = boss.earthquakeDmg;
         
         healthText.text = health.ToString();
     }
@@ -41,6 +75,20 @@ public class BossHandler : MonoBehaviour
         var color = Random.Range(0, 17);
         bodySprite.sprite = boss.bodySprites[color];
         gunSprite.sprite = boss.gunSprites[color];
+
+        anim = GetComponent<Animator>();
+
+        shieldObj.transform.localScale = new Vector3(0, 0, 0);
+        shieldObj.SetActive(false);
+
+        earthquakeObj.transform.localScale = new Vector3(0, 0, 0);
+        earthquakeObj.SetActive(false);
+        
+        if (Camera.main is not null)
+        {
+            screenPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,
+                Screen.height, 0));
+        }
     }
 
     private void Update()
@@ -61,6 +109,7 @@ public class BossHandler : MonoBehaviour
         if (other.collider.CompareTag("PlayerBullets"))
         {
             health--;
+            ChangePhase();
         }
     }
 
@@ -72,19 +121,26 @@ public class BossHandler : MonoBehaviour
             healthText.text = "0";
             gameObject.SetActive(false);
             //Spawn Explosions
+            SpawnCoins();
+            
             Destroy(gameObject, 0.5f);
         }
     }
 
-    private void MoveAround()
+    private void ChangePhase()
     {
-        var playerLoc = player.transform.position;
-        var spawnLoc = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
+        var healthPercent = health * (100 / boss.health);
 
-        if (spawnLoc.x < playerLoc.x + 1 && spawnLoc.x > playerLoc.x - 1 && spawnLoc.y < playerLoc.y + 1 && spawnLoc.y > playerLoc.y - 1)
-            MoveAround();
-        else
-            transform.position = Vector2.MoveTowards(transform.position, spawnLoc , boss.moveSpeed * Time.deltaTime);
+        if (healthPercent <= 70f && healthPercent > 40f)
+        {
+            Debug.Log("Health is Below 70%, Enemy will now enter his Second PHASE!");
+            anim.SetTrigger("GoToPhase2");
+        }
+        else if (healthPercent <= 40f)
+        {
+            Debug.Log("Health is Below 40%, Enemy will now enter his Final PHASE!");
+            anim.SetTrigger("GoToPhase3");
+        }
     }
 
     private void LookAtPlayer()
@@ -93,38 +149,225 @@ public class BossHandler : MonoBehaviour
         Quaternion rot = Quaternion.LookRotation(Vector3.forward, dir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * boss.lookSpeed);
     }
-    
-    private void SpawnEnemies()
-    {
-        var playerLoc = player.transform.position;
-        var spawnLoc = new Vector2(Random.Range(-8f, 8f), Random.Range(-4f, 4f));
 
-        if (spawnLoc.x < playerLoc.x + 1 && spawnLoc.x > playerLoc.x - 1 && 
-            spawnLoc.y < playerLoc.y + 1 && spawnLoc.y > playerLoc.y - 1)
-            SpawnEnemies();
-        else
-            Instantiate(enemyObj, spawnLoc, quaternion.identity);
+    #region Movement
+
+    public void StartMoveAround()
+    {
+        StartCoroutine(GetPos());
+    }
+
+    public void StopMoveAround()
+    {
+        StopAllCoroutines();
     }
     
-    private IEnumerator ShootDelay()
+    public void MoveAround()
     {
-        yield return new WaitForSeconds(boss.shootDelay);
-
-        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) yield break;
-        Shoot();
-        StartCoroutine(ShootDelay());
+        transform.position = Vector2.MoveTowards(transform.position, randomLocation, moveSpeed * Time.deltaTime);
     }
     
-    private void Shoot()
+    private IEnumerator GetPos()
     {
-        GameObject bullet1 = Instantiate(bulletPrefab, shootPoint1.position, shootPoint1.rotation);
-        Rigidbody2D bulletRb1 = bullet1.GetComponent<Rigidbody2D>();
-        bulletRb1.AddForce(shootPoint1.up * boss.shootSpeed, ForceMode2D.Impulse);
-        bullet1.GetComponent<Bullet>().bulletDmg = boss.shootingDmg;
+        randomLocation = new Vector2(Random.Range(-screenPos.x + 2, screenPos.x - 2), Random.Range(-screenPos.y + 2, screenPos.y - 2));
+        var randTime = Random.Range(1f, 3.1f);
+
+        yield return new WaitForSeconds(randTime);
         
-        GameObject bullet2 = Instantiate(bulletPrefab, shootPoint2.position, shootPoint2.rotation);
-        Rigidbody2D bulletRb2 = bullet2.GetComponent<Rigidbody2D>();
-        bulletRb2.AddForce(shootPoint2.up * boss.shootSpeed, ForceMode2D.Impulse);
-        bullet2.GetComponent<Bullet>().bulletDmg = boss.shootingDmg;
+        StartCoroutine(GetPos());
+    }
+
+    public void MoveToPlayer()
+    {
+        if (Vector2.Distance(transform.position, player.transform.position) >= 3f)
+        {
+            transform.position =
+                Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
+        }
+    }
+    
+    #endregion
+
+    #region Shield
+    public void StartShield()
+    {
+        StartCoroutine(Shield());
+    }
+
+    private IEnumerator Shield()
+    {
+        LeanTween.scale(shieldObj, new Vector3(shieldScale, shieldScale, shieldScale), 0.4f);
+        shieldObj.SetActive(true);
+        
+        yield return new WaitForSeconds(shieldTime);
+        
+        LeanTween.scale(shieldObj, new Vector3(0, 0, 0), 0.3f);
+        yield return new WaitForSeconds(0.3f);
+        shieldObj.SetActive(false);
+    }
+
+    #endregion
+    
+    #region Earthquakes
+    public void StartEarthquakes()
+    {
+        StartCoroutine(EarthquakeDelay());
+    }
+
+    public void StopEarthquakes()
+    {
+        StopAllCoroutines();
+    }
+
+    private void IndicatorOn()
+    {
+        LeanTween.value(earthquakeIndicator, 0f, 0.3f, 0.2f).setOnUpdate((float val) =>
+        {
+            SpriteRenderer r = earthquakeIndicator.GetComponent<SpriteRenderer>();
+            Color c = r.color;
+            c.a = val;
+            r.color = c;
+        });
+    }
+
+    private void IndicatorOff()
+    {
+        LeanTween.value(earthquakeIndicator, 0.3f, 0f, 0.2f).setOnUpdate((float val) =>
+        {
+            SpriteRenderer r = earthquakeIndicator.GetComponent<SpriteRenderer>();
+            Color c = r.color;
+            c.a = val;
+            r.color = c;
+        });
+    }
+
+    private IEnumerator EarthquakeIndicator()
+    {
+        IndicatorOn();
+        yield return new WaitForSeconds(0.2f);
+        
+        IndicatorOff();
+        yield return new WaitForSeconds(0.2f);
+        
+        IndicatorOn();
+        yield return new WaitForSeconds(0.2f);
+        
+        IndicatorOff();
+    }
+    
+    private IEnumerator EarthquakeDelay()
+    {
+        StartCoroutine(EarthquakeIndicator());
+        yield return new WaitForSeconds(0.70f);
+        
+        earthquakeObj.SetActive(true);
+        LeanTween.scale(earthquakeObj, new Vector3(earthquakeRadius, earthquakeRadius, earthquakeRadius), 0.35f);
+        
+        yield return new WaitForSeconds(0.4f);
+        
+        LeanTween.value(earthquakeObj, 1f, 0f, 0.2f).setOnUpdate((float val) =>
+        {
+            SpriteRenderer spriteRenderer = earthquakeObj.GetComponent<SpriteRenderer>();
+            Color color = spriteRenderer.color;
+            color.a = val;
+            spriteRenderer.color = color;
+        });
+        
+        yield return new WaitForSeconds(0.2f);
+        earthquakeObj.transform.localScale = new Vector3(0, 0, 0);
+        earthquakeObj.SetActive(false);
+
+        SpriteRenderer r = earthquakeObj.GetComponent<SpriteRenderer>();
+        Color c = r.color;
+        c.a = 1f;
+        r.color = c;
+
+        yield return new WaitForSeconds(earthquakeInterval);
+        StartCoroutine(EarthquakeDelay());
+    }
+
+    #endregion
+    
+    #region SpawnEnemies
+
+        public void StartSpawning()
+        {
+            StartCoroutine(SpawnDelay());
+        }
+        
+        public void StopSpawning()
+        {
+            StopAllCoroutines();
+        }
+        
+        private IEnumerator SpawnDelay()
+        {
+            SpawnEnemies();
+            yield return new WaitForSeconds(spawnInterval);
+            StartCoroutine(SpawnDelay());
+        }
+        
+        private void SpawnEnemies()
+        {
+            var playerLoc = player.transform.position;
+            var spawnLoc = new Vector2(Random.Range(-screenPos.x + 1, screenPos.x - 1), Random.Range(-screenPos.y + 1, screenPos.y - 1));
+    
+            if (Vector2.Distance(playerLoc, spawnLoc) >= 1)
+                Instantiate(enemyObj, spawnLoc, quaternion.identity);
+            else
+                SpawnEnemies();
+        }
+        
+    #endregion
+    
+    #region Shooting
+    
+        private IEnumerator ShootDelay()
+        {
+            yield return new WaitForSeconds(boss.shootDelay);
+    
+            if (GameObject.FindGameObjectsWithTag("Player").Length == 0) yield break;
+            Shoot();
+            StartCoroutine(ShootDelay());
+        }
+        
+        private void Shoot()
+        {
+            GameObject bullet1 = Instantiate(bulletPrefab, shootPoint1.position, shootPoint1.rotation);
+            Rigidbody2D bulletRb1 = bullet1.GetComponent<Rigidbody2D>();
+            bulletRb1.AddForce(shootPoint1.up * boss.shootSpeed, ForceMode2D.Impulse);
+            bullet1.GetComponent<Bullet>().bulletDmg = boss.shootingDmg;
+            
+            GameObject bullet2 = Instantiate(bulletPrefab, shootPoint2.position, shootPoint2.rotation);
+            Rigidbody2D bulletRb2 = bullet2.GetComponent<Rigidbody2D>();
+            bulletRb2.AddForce(shootPoint2.up * boss.shootSpeed, ForceMode2D.Impulse);
+            bullet2.GetComponent<Bullet>().bulletDmg = boss.shootingDmg;
+        }
+        
+        public void StartShooting()
+        {
+            LeanTween.scale(gun, new Vector3(gunScale, gunScale, gunScale), 0.3f);
+            LeanTween.moveLocal(gun, new Vector3(0, 2, 0), 0.3f);
+            StartCoroutine(ShootDelay());
+        }
+    
+        public void EndShooting()
+        {
+            LeanTween.moveLocal(gun, new Vector3(0, 0, 0), 0.3f);
+            LeanTween.scale(gun, new Vector3(0, 0, 0), 0.3f);
+            
+            StopAllCoroutines();
+        }
+
+    #endregion
+    
+    private void SpawnCoins()
+    {
+        var pos = transform.position;
+        for (int i = 0; i < coins; i++)
+        {
+            Instantiate(coinObj, pos, quaternion.identity);
+            pos += new Vector3(Random.Range(-0.4f, 0.5f), Random.Range(-0.4f, 0.4f), 0);
+        }
     }
 }
