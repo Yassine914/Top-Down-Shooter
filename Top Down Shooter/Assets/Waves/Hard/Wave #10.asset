@@ -15,11 +15,12 @@ MonoBehaviour:
   waveNumber: 10
   minWaveEnemies: 20
   maxWaveEnemies: 28
-  minTimeBetweenSpawns: 1.6
-  maxTimeBetweenSpawns: 3.5
+  minTimeBetweenSpawns: 0.8
+  maxTimeBetweenSpawns: 2.6
   circleEnemyPercent: 10
   hexEnemyPercent: 20
   pentaEnemyPercent: 30
   bombEnemyPercent: 15
   speedEnemyPercent: 15
-  bossLevel: 0
+  bossLevel: 1
+  boss: {fileID: 482556836460638983, guid: a90917ca9e58b504cb5e0c98b0448b68, type: 3}

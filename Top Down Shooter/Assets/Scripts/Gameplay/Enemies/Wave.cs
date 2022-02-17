@@ -19,4 +19,5 @@ public class Wave : ScriptableObject
     
     [Header("Boss")]
     public bool bossLevel;
+    public GameObject boss;
 }

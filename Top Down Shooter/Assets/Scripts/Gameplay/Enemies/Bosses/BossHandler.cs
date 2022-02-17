@@ -16,13 +16,21 @@ public class BossHandler : MonoBehaviour
     [Header("Enemies Spawn")]
     [SerializeField] private GameObject enemyObj;
     [SerializeField] private float spawnInterval;
-    
+    [SerializeField] private float startSpawnWaitTime;
+    [SerializeField] private GameObject circleIndicator;
+
     [Header("Shooting")]
     [SerializeField] private GameObject bulletPrefab;
     [SerializeField] private Transform shootPoint1, shootPoint2;
     [SerializeField] private GameObject gun;
+    [SerializeField] private float gunPosition;
     [SerializeField] private float gunScale;
 
+    [Header("Movement")] 
+    [SerializeField] private float minWaitTime;
+    [SerializeField] private float maxWaitTime;
+    [SerializeField] private float minDistFromPlayer;
+    
     [Header("Earthquake")] 
     [SerializeField] private GameObject earthquakeObj;
     [SerializeField] private float earthquakeRadius;
@@ -34,20 +42,27 @@ public class BossHandler : MonoBehaviour
     [SerializeField] private float shieldTime;
     [SerializeField] private float shieldScale;
 
+    [Header("Explosions")] 
+    [SerializeField] private GameObject explosion;
+
     [Header("Coins")] 
     [SerializeField] private GameObject coinObj;
     [SerializeField] private int coins;
 
     [HideInInspector] public float moveSpeed;
     [HideInInspector] public int earthquakeDmg;
+    [HideInInspector] public float runSpeed;
+    [HideInInspector] public int health;
     
     private GameObject player;
     private Slider hpBarSlider;
     private TextMeshProUGUI healthText;
-    private int health;
     private Vector3 screenPos;
     private Animator anim;
     private Vector2 randomLocation;
+    private GameObject _camera;
+    private Animator cameraAnim;
+    private int healthPercent;
 
     #endregion
 
@@ -56,17 +71,19 @@ public class BossHandler : MonoBehaviour
         gun.transform.localScale = new Vector3(0, 0, 0);
         gun.transform.position = new Vector3(0, 0, 0);
         
-        player = GameObject.FindGameObjectWithTag("Player");
-        
         hpBarSlider = GameObject.FindGameObjectWithTag("BossHpBar").GetComponent<Slider>();
         healthText = hpBarSlider.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         
         health = boss.health;
         hpBarSlider.maxValue = health;
+        hpBarSlider.transform.GetChild(3).GetComponent<TextMeshProUGUI>().text = boss.bossType.ToString();
+
+        if (Camera.main is not null) _camera = Camera.main.gameObject;
 
         moveSpeed = boss.moveSpeed;
         earthquakeDmg = boss.earthquakeDmg;
-        
+        runSpeed = boss.runSpeed;
+
         healthText.text = health.ToString();
     }
 
@@ -83,12 +100,17 @@ public class BossHandler : MonoBehaviour
 
         earthquakeObj.transform.localScale = new Vector3(0, 0, 0);
         earthquakeObj.SetActive(false);
+
+        cameraAnim = _camera.GetComponent<Animator>();
         
         if (Camera.main is not null)
         {
             screenPos = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width,
                 Screen.height, 0));
         }
+        
+        healthPercent = 100 / boss.health;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
@@ -120,7 +142,7 @@ public class BossHandler : MonoBehaviour
             health = 0;
             healthText.text = "0";
             gameObject.SetActive(false);
-            //Spawn Explosions
+            SpawnExplosions();
             SpawnCoins();
             
             Destroy(gameObject, 0.5f);
@@ -129,16 +151,14 @@ public class BossHandler : MonoBehaviour
 
     private void ChangePhase()
     {
-        var healthPercent = health * (100 / boss.health);
-
-        if (healthPercent <= 70f && healthPercent > 40f)
+        var healthPercentage = health * ((float) 100 / boss.health);
+        
+        if (healthPercentage is <= 70f and > 40f)
         {
-            Debug.Log("Health is Below 70%, Enemy will now enter his Second PHASE!");
             anim.SetTrigger("GoToPhase2");
         }
-        else if (healthPercent <= 40f)
+        else if (healthPercentage <= 40f)
         {
-            Debug.Log("Health is Below 40%, Enemy will now enter his Final PHASE!");
             anim.SetTrigger("GoToPhase3");
         }
     }
@@ -170,7 +190,7 @@ public class BossHandler : MonoBehaviour
     private IEnumerator GetPos()
     {
         randomLocation = new Vector2(Random.Range(-screenPos.x + 2, screenPos.x - 2), Random.Range(-screenPos.y + 2, screenPos.y - 2));
-        var randTime = Random.Range(1f, 3.1f);
+        var randTime = Random.Range(minWaitTime, maxWaitTime);
 
         yield return new WaitForSeconds(randTime);
         
@@ -179,7 +199,9 @@ public class BossHandler : MonoBehaviour
 
     public void MoveToPlayer()
     {
-        if (Vector2.Distance(transform.position, player.transform.position) >= 3f)
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        
+        if (Vector2.Distance(transform.position, player.transform.position) >= minDistFromPlayer)
         {
             transform.position =
                 Vector2.MoveTowards(transform.position, player.transform.position, moveSpeed * Time.deltaTime);
@@ -217,6 +239,11 @@ public class BossHandler : MonoBehaviour
     public void StopEarthquakes()
     {
         StopAllCoroutines();
+        
+        SpriteRenderer r = earthquakeIndicator.GetComponent<SpriteRenderer>();
+        r.color = new Color(255, 255, 255, 0);
+        
+        earthquakeObj.SetActive(false);
     }
 
     private void IndicatorOn()
@@ -261,6 +288,7 @@ public class BossHandler : MonoBehaviour
         yield return new WaitForSeconds(0.70f);
         
         earthquakeObj.SetActive(true);
+        cameraAnim.SetTrigger("ShakeCamBoss");
         LeanTween.scale(earthquakeObj, new Vector3(earthquakeRadius, earthquakeRadius, earthquakeRadius), 0.35f);
         
         yield return new WaitForSeconds(0.4f);
@@ -292,7 +320,7 @@ public class BossHandler : MonoBehaviour
 
         public void StartSpawning()
         {
-            StartCoroutine(SpawnDelay());
+            StartCoroutine(SpawnStartDelay());
         }
         
         public void StopSpawning()
@@ -306,16 +334,33 @@ public class BossHandler : MonoBehaviour
             yield return new WaitForSeconds(spawnInterval);
             StartCoroutine(SpawnDelay());
         }
+
+        private IEnumerator SpawnStartDelay()
+        {
+            yield return new WaitForSeconds(startSpawnWaitTime);
+            StartCoroutine(SpawnDelay());
+        }
         
         private void SpawnEnemies()
         {
             var playerLoc = player.transform.position;
             var spawnLoc = new Vector2(Random.Range(-screenPos.x + 1, screenPos.x - 1), Random.Range(-screenPos.y + 1, screenPos.y - 1));
-    
+
             if (Vector2.Distance(playerLoc, spawnLoc) >= 1)
-                Instantiate(enemyObj, spawnLoc, quaternion.identity);
+            {
+                StartCoroutine(SpawnIndicator(spawnLoc));
+            }
             else
+            {
                 SpawnEnemies();
+            }
+        }
+
+        private IEnumerator SpawnIndicator(Vector2 spawnLoc)
+        {
+            Instantiate(circleIndicator, spawnLoc, Quaternion.identity);
+            yield return new WaitForSeconds(0.6f);
+            Instantiate(enemyObj, spawnLoc, quaternion.identity);
         }
         
     #endregion
@@ -346,8 +391,10 @@ public class BossHandler : MonoBehaviour
         
         public void StartShooting()
         {
+            gun.transform.localPosition = new Vector3(0, 0, 0);
+            
             LeanTween.scale(gun, new Vector3(gunScale, gunScale, gunScale), 0.3f);
-            LeanTween.moveLocal(gun, new Vector3(0, 2, 0), 0.3f);
+            LeanTween.moveLocal(gun, new Vector3(0, gunPosition, 0), 0.3f);
             StartCoroutine(ShootDelay());
         }
     
@@ -355,7 +402,7 @@ public class BossHandler : MonoBehaviour
         {
             LeanTween.moveLocal(gun, new Vector3(0, 0, 0), 0.3f);
             LeanTween.scale(gun, new Vector3(0, 0, 0), 0.3f);
-            
+
             StopAllCoroutines();
         }
 
@@ -367,7 +414,14 @@ public class BossHandler : MonoBehaviour
         for (int i = 0; i < coins; i++)
         {
             Instantiate(coinObj, pos, quaternion.identity);
-            pos += new Vector3(Random.Range(-0.4f, 0.5f), Random.Range(-0.4f, 0.4f), 0);
+            pos += new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0);
         }
+    }
+
+    private void SpawnExplosions()
+    {
+        var exp = Instantiate(explosion, transform.position, quaternion.identity);
+        Destroy(exp, 0.8f);
+        cameraAnim.SetTrigger("ShakeCamBoss");
     }
 }

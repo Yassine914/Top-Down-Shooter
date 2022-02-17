@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6c80d1135d9ba74cb79e8ec10315d2e, type: 3}
+  m_Name: Wave #85
+  m_EditorClassIdentifier: 
+  waveNumber: 85
+  minWaveEnemies: 10
+  maxWaveEnemies: 18
+  minTimeBetweenSpawns: 1.2
+  maxTimeBetweenSpawns: 2.6
+  circleEnemyPercent: 20
+  hexEnemyPercent: 20
+  pentaEnemyPercent: 25
+  bombEnemyPercent: 25
+  speedEnemyPercent: 10
+  bossLevel: 1
+  boss: {fileID: 5005876559222773461, guid: 374d576dfafc1f04fa67248ed787e65b, type: 3}

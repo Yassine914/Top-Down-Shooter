@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Wave #9
   m_EditorClassIdentifier: 
   waveNumber: 9
-  minWaveEnemies: 18
-  maxWaveEnemies: 28
-  minTimeBetweenSpawns: 1.6
-  maxTimeBetweenSpawns: 3.5
+  minWaveEnemies: 14
+  maxWaveEnemies: 16
+  minTimeBetweenSpawns: 0.8
+  maxTimeBetweenSpawns: 2.6
   circleEnemyPercent: 10
   hexEnemyPercent: 30
   pentaEnemyPercent: 25
   bombEnemyPercent: 10
   speedEnemyPercent: 25
   bossLevel: 0
+  boss: {fileID: 0}

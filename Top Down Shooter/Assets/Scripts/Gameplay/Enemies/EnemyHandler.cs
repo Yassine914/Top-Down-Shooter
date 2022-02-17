@@ -25,9 +25,8 @@ public class EnemyHandler : MonoBehaviour
     [SerializeField] private int maxCoins;
 
     [Header("Death")]
-    [SerializeField] private GameObject explosion1;
-    [SerializeField] private Transform[] explosionLocations;
-
+    [SerializeField] private GameObject explosion;
+    
     [HideInInspector] public string enemyName;
     private int _enemyHealth;
     [HideInInspector] public int enemyDamage;
@@ -36,6 +35,9 @@ public class EnemyHandler : MonoBehaviour
     [HideInInspector] public float enemyShootDelay;
     [HideInInspector] public float minDistFromPlayer;
     [HideInInspector] public float enemyLookSpeed;
+    
+    private GameObject cam;
+    private Animator cameraAnim;
     
     private Transform _player;
     private Vector3 _playerPos;
@@ -52,6 +54,8 @@ public class EnemyHandler : MonoBehaviour
         enemyShootDelay = enemyInfo.enemyShootDelay;
         minDistFromPlayer = enemyInfo.minDistFromPlayer;
         enemyLookSpeed = enemyInfo.enemyLookSpeed;
+
+        if (Camera.main is not null) cam = Camera.main.gameObject;
         
         healthRenderer.sprite = healthSprites.Last();
     }
@@ -60,6 +64,8 @@ public class EnemyHandler : MonoBehaviour
     {
         if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
         _player = GameObject.FindGameObjectWithTag("Player").transform;
+
+        cameraAnim = cam.GetComponent<Animator>();
         
         StartCoroutine(ShootDelay());
     }
@@ -104,6 +110,8 @@ public class EnemyHandler : MonoBehaviour
 
     private void FollowPlayer(Vector3 playerPos) //Follow Player & Look At Him
     {
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        
         var enemyPos = transform.position;
         if (Vector2.Distance(playerPos, enemyPos) > minDistFromPlayer)
         {
@@ -151,9 +159,8 @@ public class EnemyHandler : MonoBehaviour
 
     private void DeathExplosion()
     {
-        foreach (var t in explosionLocations)
-        {
-            Instantiate(explosion1, t.position, quaternion.identity);
-        }
+        var exp = Instantiate(explosion, transform.position, quaternion.identity);
+        Destroy(exp, 0.8f);
+        cameraAnim.SetTrigger("ShakeCamEnemy");
     }
 }

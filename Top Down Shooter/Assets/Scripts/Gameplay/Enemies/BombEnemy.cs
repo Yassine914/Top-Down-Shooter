@@ -12,16 +12,21 @@ public class BombEnemy : MonoBehaviour
     [SerializeField] private int maxCoins;
     
     [Header("Death")]
-    [SerializeField] private GameObject explosion1;
-    [SerializeField] private Transform[] explosionLocations;
+    [SerializeField] private GameObject explosion;
 
     [HideInInspector] public int enemyDamage;
     private Transform _player;
     private bool diedFromBullet;
+    private GameObject cam;
+    private Animator cameraAnim;
 
     private void Start()
     {
+        if (Camera.main is not null) cam = Camera.main.gameObject;
+        cameraAnim = cam.GetComponent<Animator>();
+
         if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         enemyDamage = enemyInfo.enemyDamage;
     }
@@ -31,22 +36,34 @@ public class BombEnemy : MonoBehaviour
         if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
         
         FollowPlayer(_player.position);
-            
-        if(enemyInfo.enemyHealth <= 0)
-            Destroy(gameObject); DeathExplosion();
+
+        if (enemyInfo.enemyHealth <= 0)
+        {
+            DeathExplosion();
+            gameObject.SetActive(false);
+            Destroy(gameObject, 0.5f);
+        }
+
+        if (enemyInfo.enemyHealth <= 0 && diedFromBullet)
+        {
+            DeathExplosion();
+            gameObject.SetActive(false);
+            SpawnCoins();
+            Destroy(gameObject, 0.5f);
+        }
         
-        if(enemyInfo.enemyHealth <= 0 && diedFromBullet)
-            SpawnCoins(); DeathExplosion();
     }
     
     private void FollowPlayer(Vector3 playerPos)
     {
+        if (GameObject.FindGameObjectsWithTag("Player").Length == 0) return;
+        
         var enemyPos = transform.position;
         
         transform.position = Vector2.MoveTowards(enemyPos,
             playerPos , enemyInfo.enemySpeed * Time.deltaTime);
 
-            Vector3 dir = (playerPos - enemyPos);
+        Vector3 dir = (playerPos - enemyPos);
         Quaternion rot = Quaternion.LookRotation(Vector3.forward, dir);
         transform.rotation = Quaternion.Lerp(transform.rotation, rot, Time.deltaTime * enemyInfo.enemyLookSpeed);
     }
@@ -81,9 +98,8 @@ public class BombEnemy : MonoBehaviour
     
     private void DeathExplosion()
     {
-        foreach (var t in explosionLocations)
-        {
-            Instantiate(explosion1, t.position, quaternion.identity);
-        }
+        cameraAnim.SetTrigger("ShakeCamEnemy");
+        var exp = Instantiate(explosion, transform.position, quaternion.identity);
+        Destroy(exp, 0.8f);
     }
 }

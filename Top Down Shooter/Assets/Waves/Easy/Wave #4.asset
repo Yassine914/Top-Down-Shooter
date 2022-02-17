@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Wave #4
   m_EditorClassIdentifier: 
   waveNumber: 4
-  minWaveEnemies: 16
-  maxWaveEnemies: 22
+  minWaveEnemies: 12
+  maxWaveEnemies: 14
   minTimeBetweenSpawns: 1.5
   maxTimeBetweenSpawns: 4.1
   circleEnemyPercent: 60
@@ -23,3 +23,4 @@ MonoBehaviour:
   bombEnemyPercent: 0
   speedEnemyPercent: 0
   bossLevel: 0
+  boss: {fileID: 0}

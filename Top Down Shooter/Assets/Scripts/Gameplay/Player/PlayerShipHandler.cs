@@ -8,7 +8,7 @@ public class PlayerShipHandler : MonoBehaviour
     private int shipColor;
 
 
-    private void Start()
+    private void Awake()
     {
         shipType = PlayerPrefs.GetInt("EquippedShip", 0);
         shipColor = PlayerPrefs.GetInt("EquippedColor", 0);

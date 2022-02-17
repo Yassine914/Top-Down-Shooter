@@ -16,6 +16,7 @@ TagManager:
   - CoinCounter
   - BossHpBar
   - Earthquake
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -31,8 +32,8 @@ TagManager:
   - EnemyBullets
   - Shield
   - PlayerShield
-  - 
-  - 
+  - Boss
+  - Coin
   - 
   - 
   - 

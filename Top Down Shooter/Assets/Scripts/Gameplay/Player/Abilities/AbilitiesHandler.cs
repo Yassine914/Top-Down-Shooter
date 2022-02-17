@@ -87,8 +87,6 @@ public class AbilitiesHandler : MonoBehaviour
         PlayerPrefs.SetInt("SelectedAbility", selected);
         if(selected != 0)
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins", 0) - abilities[selected - 1].abilityCost);
-        
-        Debug.Log("SelectedAbility: " + selected);
     }
 
     public void CancelPurchase()
