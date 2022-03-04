@@ -11,14 +11,54 @@ public class PlayerShooting : MonoBehaviour
     [SerializeField] public float bulletDelay;
     private bool isShooting = false;
     private GameObject selectedBullet;
+    private Joystick shootJoystick;
+    private bool useJoystick;
 
 
     private void Awake()
     {
         selectedBullet = bullets[PlayerPrefs.GetInt("EquippedBullet", 0)];
+        
+        if (Application.platform == RuntimePlatform.Android)
+        {
+            StartJoystick();
+        }
+        else
+        {
+            EndJoystick();
+        }
+    }
+
+    private void StartJoystick()
+    {
+        GameObject.FindGameObjectWithTag("ShootJoystick").SetActive(true);
+        shootJoystick = GameObject.FindGameObjectWithTag("ShootJoystick").GetComponent<Joystick>();
+        useJoystick = true;
+    }
+
+    private void EndJoystick()
+    {
+        GameObject.FindGameObjectWithTag("ShootJoystick").SetActive(false);
+        useJoystick = false;
     }
 
     private void Update()
+    {
+        if(useJoystick)
+            UseJoystick();
+        else
+            UseInput();
+    }
+
+    private void UseJoystick()
+    {
+        if (shootJoystick.Horizontal is < .3f and > -.3f && shootJoystick.Vertical is < .3f and > -.3f) return;
+        
+        if(!isShooting)
+            StartCoroutine(ShootDelay());
+    }
+
+    private void UseInput()
     {
         if (Input.GetButton("Fire1") && !isShooting)
         {

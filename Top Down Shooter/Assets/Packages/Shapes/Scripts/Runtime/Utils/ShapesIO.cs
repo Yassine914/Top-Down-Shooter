@@ -16,7 +16,7 @@ namespace Shapes {
 		static string rootFolder = null;
 		public static string RootFolder {
 			get {
-				if( rootFolder == null ) {
+				if( rootFolder == null) {
 					string shapeAssetsPath = AssetDatabase.GUIDToAssetPath( AssetDatabase.FindAssets( "t:ShapesAssets" )[0] );
 					int fileNameLen = "/Resources/Shapes Assets.asset".Length;
 					rootFolder = shapeAssetsPath.Substring( 0, shapeAssetsPath.Length - fileNameLen );
@@ -29,7 +29,7 @@ namespace Shapes {
 		static string shaderFolder = null;
 		public static string ShaderFolder {
 			get {
-				if( shaderFolder == null )
+				if( shaderFolder == null)
 					shaderFolder = RootFolder + "/Shaders";
 				return shaderFolder;
 			}

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class EnemyHandler : MonoBehaviour
@@ -117,6 +118,10 @@ public class EnemyHandler : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(enemyPos, playerPos , enemySpeed * Time.deltaTime);
         }
+        else if(Vector2.Distance(playerPos, enemyPos) < (minDistFromPlayer - .5f))
+        {
+            transform.position = Vector2.MoveTowards(enemyPos, playerPos , -(enemySpeed - .5f) * Time.deltaTime);
+        }
 
         Vector3 dir = (playerPos - enemyPos);
         Quaternion rot = Quaternion.LookRotation(Vector3.forward, dir);
@@ -162,5 +167,8 @@ public class EnemyHandler : MonoBehaviour
         var exp = Instantiate(explosion, transform.position, quaternion.identity);
         Destroy(exp, 0.8f);
         cameraAnim.SetTrigger("ShakeCamEnemy");
+        
+        if(SceneManager.GetActiveScene().name is "Wave Mode Easy" or "Wave Mode Hard")
+            FindObjectOfType<EnemyWaveHandler>().enemiesKilled++;
     }
 }

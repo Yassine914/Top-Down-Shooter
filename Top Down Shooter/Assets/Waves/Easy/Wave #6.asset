@@ -16,7 +16,7 @@ MonoBehaviour:
   minWaveEnemies: 13
   maxWaveEnemies: 15
   minTimeBetweenSpawns: 1.3
-  maxTimeBetweenSpawns: 3.4
+  maxTimeBetweenSpawns: 3.3
   circleEnemyPercent: 40
   hexEnemyPercent: 30
   pentaEnemyPercent: 20

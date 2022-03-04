@@ -17,6 +17,12 @@ TagManager:
   - BossHpBar
   - Earthquake
   - Boss
+  - ShootJoystick
+  - MoveJoystick
+  - Abilities
+  - AbilitiesMobile
+  - AbilitiesDesktop
+  - Prompt
   layers:
   - Default
   - TransparentFX

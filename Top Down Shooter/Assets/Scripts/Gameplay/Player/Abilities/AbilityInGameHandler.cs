@@ -9,7 +9,8 @@ public class AbilityInGameHandler : MonoBehaviour
     [SerializeField] private float abilityActiveTime;
     private float abilityCharge;
     [HideInInspector] public bool isAbilityActive;
-
+    [SerializeField] private int abilityIndexGame;
+    
     private void Start()
     {
         isAbilityActive = false;
@@ -25,6 +26,15 @@ public class AbilityInGameHandler : MonoBehaviour
     private void Update()
     {
         Ability();
+        AbilityButton();
+    }
+
+    private void AbilityButton()
+    {
+        if (Input.GetKeyDown(KeyCode.E) && abilityChargeTime <= 0)
+        {
+            AbilityPress(abilityIndexGame);
+        }
     }
 
     private void Ability()
@@ -53,14 +63,13 @@ public class AbilityInGameHandler : MonoBehaviour
         switch (abilityIndex)
         {
             case 1:
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Shield>().StartShield();
-                Debug.Log("Shield Started");
+                FindObjectOfType<Shield>().StartShield();
                 break;
             case 2:
-                GameObject.FindGameObjectWithTag("Player").GetComponent<BulletSpree>().StartBulletSpree();
+                FindObjectOfType<BulletSpree>().StartBulletSpree();
                 break;
             case 3:
-                GameObject.FindGameObjectWithTag("Player").GetComponent<Dash>().StartDash();
+                FindObjectOfType<Dash>().StartDash();
                 break;
         }
     }

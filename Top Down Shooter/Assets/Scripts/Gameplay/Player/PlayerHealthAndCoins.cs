@@ -15,7 +15,7 @@ public class PlayerHealthAndCoins : MonoBehaviour
     private void Awake()
     {
         healthSlider = GameObject.FindGameObjectWithTag("HealthBarSlider").GetComponent<Slider>();
-        healthText = healthSlider.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        healthText = healthSlider.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
         healthSlider.maxValue = health;
     }
 

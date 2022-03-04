@@ -25,6 +25,11 @@ public class EnemyWaveHandler : MonoBehaviour
     [SerializeField] private Color waveTextNormalColor;
     [SerializeField] private Color waveTextBossColor;
 
+    [HideInInspector] public int wavesNo;
+    [HideInInspector] public int enemiesKilled;
+    [HideInInspector] public int bossesKilled;
+    [HideInInspector] public int time;
+    
     private int wallNo;
     private float xValue;
     private float yValue;
@@ -54,10 +59,18 @@ public class EnemyWaveHandler : MonoBehaviour
         countdownTextObj.transform.localScale = new Vector3(0, 0, 0);
         wavesTextObj.transform.localScale = new Vector3(0, 0, 0);
         
+        enemiesKilled = 0;
+        bossesKilled = 0;
+        time = 0;
+            
         wavesTextObj.SetActive(false);
         countdownTextObj.SetActive(false);
-        
         StartCoroutine(WaveCountdown(0));
+    }
+
+    private void Update()
+    {
+        time = (int) Time.timeSinceLevelLoad;
     }
 
     private Vector3 SpawnLocation() //Returns Random Spawn Point
@@ -195,6 +208,8 @@ public class EnemyWaveHandler : MonoBehaviour
                     StartCoroutine(WaveComplete());
                     yield return new WaitForSeconds(2f);
                     StartCoroutine(WaveCountdown(wave + 1));
+                    bossesKilled++;
+                    wavesNo = wave + 1;
                     break;
                 }
             }
@@ -222,16 +237,17 @@ public class EnemyWaveHandler : MonoBehaviour
 
             if (enemiesSpawned >= waveEnemies)
             {
-                var noOfTries = 48;
+                var noOfTries = 150;
             
                 for (int i = 0; i < noOfTries; i++)
                 {
-                    yield return new WaitForSeconds(5f);
+                    yield return new WaitForSeconds(3f);
                     if (GameObject.FindGameObjectsWithTag("Enemies").Length == 0)
                     {
                         StartCoroutine(WaveComplete());
-                        yield return new WaitForSeconds(1.15f);
+                        yield return new WaitForSeconds(1.5f);
                         StartCoroutine(WaveCountdown(wave + 1));
+                        wavesNo = wave + 1;
                         break;
                     }
                 }
